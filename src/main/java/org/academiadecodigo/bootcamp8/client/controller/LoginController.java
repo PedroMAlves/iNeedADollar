@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp8.client.controller;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,9 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.academiadecodigo.bootcamp8.client.view.Navigation;
 
-import java.io.IOException;
-import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,6 +40,47 @@ public class LoginController implements Controller{
 
     @FXML
     private Hyperlink close;
+
+    @FXML
+    void onClose(ActionEvent event) {
+        Navigation.getInstance().close();
+    }
+
+    @FXML
+    void onHelp(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onLogin(ActionEvent event) {
+        if (login.getText().equals("Login")) {
+            if(isLoginFieldEmpty()){
+                return;
+            }else{
+                //authenticate();
+            }
+        }else {
+            /*if (isAnyFieldEmpty()) {
+                return;
+            }else{
+                addUser();
+            }*/
+        }
+    }
+
+    private boolean isLoginFieldEmpty() {
+        if (username.getText().isEmpty() || password.getText().isEmpty()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @FXML
+    void onRegister(ActionEvent event) {
+        login.setText("Register");
+
+    }
 
     private Stage stage;
 
