@@ -35,7 +35,7 @@
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="listedHistory" layoutX="8.0" prefHeight="309.0" prefWidth="192.0" style="-fx-background-color: transparent; -fx-border-style: solid;" />
-                  <Label alignment="BASELINE_RIGHT" layoutX="118.0" layoutY="317.0" prefHeight="39.0" prefWidth="82.0" text="0 €" textAlignment="CENTER">
+                  <Label fx:id="balance" alignment="BASELINE_RIGHT" layoutX="118.0" layoutY="317.0" prefHeight="39.0" prefWidth="82.0" text="0 €" textAlignment="CENTER">
                      <font>
                         <Font size="32.0" />
                      </font>

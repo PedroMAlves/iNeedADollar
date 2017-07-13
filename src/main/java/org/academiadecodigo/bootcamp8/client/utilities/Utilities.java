@@ -9,6 +9,9 @@ public class Utilities {
     public final static int SCREEN_MIN_HEIGHT = 420;
     public static final String LOGIN_VIEW= "login";
     public static final String MAIN_VIEW= "main";
+    public static final String INVALID_USER="Username not valid. Must be 6 characters long only letters and numbers";
+    public static final String INVALID_PASS = "Password not valid. Must be 6 characters long only letters and numbers";
+    public static final String INVALID_EMAIL="Email not valid.";
 
     public static final String LETTERS_NUM_REGEX = "\\w{6,}";
 
