@@ -46,7 +46,7 @@
           <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Hyperlink fx:id="register" alignment="CENTER_RIGHT" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="65.0" text="register" GridPane.halignment="RIGHT">
+            <Hyperlink fx:id="register" alignment="CENTER_RIGHT" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="65.0" style="-fx-f: BLACK;" text="register" GridPane.halignment="RIGHT">
                <font>
                   <Font size="14.0" />
                </font>
@@ -62,7 +62,7 @@
                </GridPane.margin>
             </Label>
             <Label alignment="CENTER" contentDisplay="CENTER" text="|" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Hyperlink fx:id="close" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="51.0" text="close" GridPane.columnIndex="4" GridPane.halignment="LEFT">
+            <Hyperlink fx:id="close" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="46.0" text="close" GridPane.columnIndex="4" GridPane.halignment="LEFT">
                <font>
                   <Font size="14.0" />
                </font>
