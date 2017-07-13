@@ -130,39 +130,34 @@ public class LoginController implements Controller {
             return;
         }
 
-        userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Values.LOGIN_FAIL);
+        userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, reply);
 
     }
 
     private void addUser() {
         if (!Utilities.isUsernameValid(username.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, );
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_USER );
             return;
         }
         if (!Utilities.isEmailValid(eMail.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, );
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_EMAIL);
 
             return;
         }
         if (!Utilities.isPasswordValid(password.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, );
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_PASS);
 
             return;
         }
         connectionService.registerUser(username.getText(), password.getText(), eMail.getText());
 
         String s = connectionService.getReply();
-        roleService.setGuest(curr);
-        authenticationService.addUser(curr);
-        if (prevSize == authenticationService.count()) {
-            logConsole.setText(Utils.USER_TAKEN);
-            return;
+
+        if (s.equals(Values.REGISTER_OK)) {
+           eMailRemove();
+           return;
         }
-        sessionService.setLoggedUser(curr);
-        setTextGreen();
-        logConsole.setText(Utils.REGISTER_OK);
-        showLogin();
-        emailField.setText(Utils.SET_BLANK);
+        userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, s);
     }
 
     private Optional<ButtonType> userPrompt(Alert.AlertType type, String title, String msg){
