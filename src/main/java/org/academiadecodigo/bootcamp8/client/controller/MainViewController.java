@@ -8,8 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class MainViewController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainViewController implements Controller{
 
     @FXML
     private ListView<?> listedActive;
@@ -36,5 +40,14 @@ public class MainViewController {
 
     }
 
+    @Override
+    public void setStage(Stage stage) {
+        
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
 

@@ -54,13 +54,13 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public String getReply() {
 
-        Message<String> msg = null;
+        String msg = null;
         try {
-            msg = (Message)objectInputStream.readObject();
+            msg = (String)objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error reading stream " + e.getMessage());
         }
-        return msg.getContent();
+        return msg;
     }
 
     @Override

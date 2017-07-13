@@ -3,7 +3,6 @@ package org.academiadecodigo.bootcamp8.server.handler;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
 import org.academiadecodigo.bootcamp8.shared.Values;
 import org.academiadecodigo.bootcamp8.shared.message.Message;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

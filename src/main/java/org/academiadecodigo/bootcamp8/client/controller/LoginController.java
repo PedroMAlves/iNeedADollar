@@ -92,7 +92,7 @@ public class LoginController implements Controller {
            if (isLoginFieldEmpty()) {
                return;
            } else {
-        authenticate();
+         authenticate();
             }
         } /*else {
             if (isAnyFieldEmpty()) {
