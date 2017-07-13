@@ -10,16 +10,17 @@ import java.util.List;
 public interface UserService {
 
 
-     boolean authenticate(String username, String password);
+    boolean authenticate(String username, String password);
 
-     boolean addUser(User user);
+    boolean addUser(User user);
+
     boolean updateBio(List<String> updatedBio);
 
-     boolean deleteAccount(String username, String password);
+    boolean deleteAccount(String username, String password);
 
-     User getUser(String username);
+    User getUser(String username);
 
     boolean changePassword(String username, String oldPass, String newPass);
 
-    public List<String> getUserBio(String username);
+    List<String> getUserBio(String username);
 }

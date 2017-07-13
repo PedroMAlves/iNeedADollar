@@ -38,7 +38,7 @@ public class Server {
             System.out.println("here");
             Socket clientSocket = serverSocket.accept();
             System.out.println("after socket");
-            cachedPool.submit(new ClientHandler(clientSocket));
+            cachedPool.submit(new ClientHandler(clientSocket, userService));
         }
     }
 
