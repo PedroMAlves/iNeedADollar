@@ -127,6 +127,7 @@ public class LoginController implements Controller {
     }
 
     private Optional<ButtonType> userPrompt(Alert.AlertType type, String title, String msg){
+
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -172,6 +173,7 @@ public class LoginController implements Controller {
 
     @FXML
     void onClose(ActionEvent event) {
+        connectionService.close();
         Navigation.getInstance().close();
     }
 

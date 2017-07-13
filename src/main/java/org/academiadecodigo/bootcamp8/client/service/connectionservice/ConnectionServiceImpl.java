@@ -43,6 +43,15 @@ public class ConnectionServiceImpl implements ConnectionService {
     }
 
     @Override
+    public void close() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public String getReply() {
 
         Message<String> msg = null;
