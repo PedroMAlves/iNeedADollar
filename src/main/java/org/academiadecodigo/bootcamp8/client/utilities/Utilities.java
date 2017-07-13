@@ -7,6 +7,7 @@ public class Utilities {
 
     public final static int SCREEN_MIN_WIDTH = 720;
     public final static int SCREEN_MIN_HEIGHT = 420;
+    public final static String ICON = "/view/possible-logo.png";
     public static final String LOGIN_VIEW= "login";
     public static final String MAIN_VIEW= "main";
     public static final String INVALID_USER="Username not valid. Must be 6 characters long only letters and numbers";
