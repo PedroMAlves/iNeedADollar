@@ -24,6 +24,9 @@ public class MainViewController {
     private Label receive;
 
     @FXML
+    private Label balance;
+
+    @FXML
     void pay(MouseEvent event) {
 
     }
