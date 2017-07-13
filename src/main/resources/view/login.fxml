@@ -48,17 +48,17 @@
           <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Hyperlink fx:id="register" alignment="CENTER_RIGHT" maxHeight="40.0" minHeight="40.0" onAction="#onRegister" prefHeight="40.0" prefWidth="65.0" style="-fx-border-color: transparent;" text="register" GridPane.halignment="RIGHT">
+            <Hyperlink fx:id="register" alignment="CENTER_RIGHT" maxHeight="40.0" minHeight="40.0" onAction="#onRegister" prefHeight="40.0" prefWidth="65.0" style="-fx-border-color: transparent; -fx-text-fill: BLACK;" text="register" GridPane.halignment="RIGHT">
                <font>
                   <Font size="14.0" />
                </font>
             </Hyperlink>
-            <Hyperlink fx:id="help" alignment="CENTER" minHeight="40.0" onAction="#onHelp" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: transparent;" text="help" GridPane.columnIndex="2">
+            <Hyperlink fx:id="help" alignment="CENTER" minHeight="40.0" onAction="#onHelp" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: transparent; -fx-text-fill: BLACK;" text="help" GridPane.columnIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
             </Hyperlink>
-            <Hyperlink fx:id="close" maxHeight="40.0" minHeight="40.0" onAction="#onClose" prefHeight="40.0" prefWidth="51.0" style="-fx-border-color: transparent;" text="close" GridPane.columnIndex="4" GridPane.halignment="LEFT">
+            <Hyperlink fx:id="close" maxHeight="40.0" minHeight="40.0" onAction="#onClose" prefHeight="40.0" prefWidth="51.0" style="-fx-border-color: transparent; -fx-text-fill: BLACK;" text="close" GridPane.columnIndex="4" GridPane.halignment="LEFT">
                <font>
                   <Font size="14.0" />
                </font>

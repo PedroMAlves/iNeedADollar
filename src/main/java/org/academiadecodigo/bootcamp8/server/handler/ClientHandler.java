@@ -1,5 +1,9 @@
 package org.academiadecodigo.bootcamp8.server.handler;
 
+import org.academiadecodigo.bootcamp8.server.service.UserService;
+import org.academiadecodigo.bootcamp8.shared.Values;
+import org.academiadecodigo.bootcamp8.shared.message.Message;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,10 +16,12 @@ public class ClientHandler implements Runnable {
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
     private Socket clientSocket;
+    private UserService userService;
     boolean run;
 
-    public ClientHandler(Socket clientSocket) {
+    public ClientHandler(Socket clientSocket, UserService userService) {
         this.clientSocket = clientSocket;
+        this.userService = userService;
         run = true;
 
     }
@@ -31,7 +37,6 @@ public class ClientHandler implements Runnable {
 
     }
 
-
     private void setStreams() {
         try {
             objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -42,21 +47,35 @@ public class ClientHandler implements Runnable {
     }
 
     private void login() {
-        try {
-            System.out.println("going to read from stream");
+        while (true) {
+            Message<String[]> str = null;
             try {
-                String string = (String) objectInputStream.readObject();
-                System.out.println(string);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                str = (Message<String[]>) objectInputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                System.err.println("error reading from stream " + e.getMessage());
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            String[] s = str.getContent();
+            if (userService.authenticate(s[0], s[1])){
+                try {
+                    objectOutputStream.writeObject(Values.LOGIN_OK);
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            try {
+                objectOutputStream.writeObject(Values.LOGIN_FAIL);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
-    private void read() {
 
+    private void read() {
+        
     }
 }
