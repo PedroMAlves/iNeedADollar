@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp8.client.controller;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
@@ -11,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,10 +38,14 @@ public class LoginController implements Controller{
     @FXML
     private Hyperlink help;
 
+    @FXML
+    private Hyperlink close;
+
     private Stage stage;
 
     private double x;
     private double y;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDraggable();

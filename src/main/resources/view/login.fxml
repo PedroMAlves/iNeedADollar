@@ -34,11 +34,13 @@
          </children>
       </GridPane>
       <Button fx:id="login" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-color: BLACK; -fx-border-style: SOLID;" text="login" textFill="WHITE" />
-      <GridPane maxWidth="150.0">
+      <GridPane maxWidth="223.0" prefHeight="25.0" prefWidth="223.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="15.0" minWidth="15.0" prefWidth="15.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="35.0" minWidth="40.0" prefWidth="35.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="15.0" minWidth="15.0" prefWidth="15.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
@@ -49,7 +51,7 @@
                   <Font size="14.0" />
                </font>
             </Hyperlink>
-            <Hyperlink fx:id="help" minHeight="40.0" prefHeight="40.0" prefWidth="41.0" text="help" GridPane.columnIndex="2">
+            <Hyperlink fx:id="help" alignment="CENTER" minHeight="40.0" prefHeight="40.0" prefWidth="40.0" text="help" GridPane.columnIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -59,6 +61,12 @@
                   <Insets />
                </GridPane.margin>
             </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="|" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Hyperlink fx:id="close" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="51.0" text="close" GridPane.columnIndex="4" GridPane.halignment="LEFT">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </GridPane>
     </children>
