@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" spacing="20.0" style="-fx-background-color: DARKCYAN;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" spacing="20.0" style="-fx-background-color: DARKCYAN;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp8.client.controller.LoginController">
     <children>
       <ImageView fitHeight="99.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,7 +49,7 @@
                   <Font size="14.0" />
                </font>
             </Hyperlink>
-            <Hyperlink minHeight="40.0" prefHeight="40.0" prefWidth="41.0" text="help" GridPane.columnIndex="2">
+            <Hyperlink fx:id="help" minHeight="40.0" prefHeight="40.0" prefWidth="41.0" text="help" GridPane.columnIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
