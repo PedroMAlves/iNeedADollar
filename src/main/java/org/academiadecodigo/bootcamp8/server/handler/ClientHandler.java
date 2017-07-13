@@ -44,7 +44,13 @@ public class ClientHandler implements Runnable {
     private void login() {
         try {
             System.out.println("going to read from stream");
-            System.out.println(objectInputStream.read());
+            try {
+                String string = (String) objectInputStream.readObject();
+                System.out.println(string);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
