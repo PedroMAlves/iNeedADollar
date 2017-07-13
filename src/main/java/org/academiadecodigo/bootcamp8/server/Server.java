@@ -19,6 +19,7 @@ public class Server {
 
     public Server(UserService userService) {
       this.userService = userService;
+      Server.PORT = 4040;
     }
 
 
