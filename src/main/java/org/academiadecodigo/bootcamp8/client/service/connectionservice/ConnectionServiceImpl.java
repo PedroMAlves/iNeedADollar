@@ -1,5 +1,8 @@
 package org.academiadecodigo.bootcamp8.client.service.connectionservice;
 
+import org.academiadecodigo.bootcamp8.shared.message.Message;
+import org.academiadecodigo.bootcamp8.shared.message.MessageType;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -26,6 +29,29 @@ public class ConnectionServiceImpl implements ConnectionService {
         }
     }
 
+
+    @Override
+    public void authenticateUser(String username, String password) {
+        String[] msgArr = {username, password};
+        Message msg = new Message<String[]> (MessageType.LOGIN, msgArr);
+        try {
+            objectOutputStream.writeObject(msg);
+        } catch (IOException e) {
+            System.err.println("Unable to write object.");
+        }
+    }
+
+    @Override
+    public String getReply() {
+
+        Message<String> msg = null;
+        try {
+            msg = (Message)objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error reading stream " + e.getMessage());
+        }
+        return msg.getContent();
+    }
 
     @Override
     public String getName() {

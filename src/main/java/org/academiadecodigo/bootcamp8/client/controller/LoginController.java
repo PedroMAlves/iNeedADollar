@@ -3,18 +3,19 @@ package org.academiadecodigo.bootcamp8.client.controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
-import org.academiadecodigo.bootcamp8.client.service.loginservice.LoginService;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
+import org.academiadecodigo.bootcamp8.shared.Values;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoginController implements Controller{
@@ -46,15 +47,14 @@ public class LoginController implements Controller{
     private Stage stage;
     private double x;
     private double y;
-    private LoginService loginService;
+    private ConnectionService connectionService;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDraggable();
-        loginService = ServiceRegistry.getInstance().getService(LoginService.class);
-
+        connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
 
     }
 
@@ -89,7 +89,7 @@ public class LoginController implements Controller{
             if(isLoginFieldEmpty()){
                 return;
             }else{
-                //authenticate();
+                authenticate();
             }
         }else {
             /*if (isAnyFieldEmpty()) {
@@ -106,6 +106,28 @@ public class LoginController implements Controller{
         }
 
         return false;
+    }
+
+    private void authenticate() {
+        connectionService.authenticateUser(username.getText(), password.getText());
+        String reply = connectionService.getReply();
+
+        if (reply.equals(Values.LOGIN_OK)) {
+            Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
+            return;
+        }
+
+        userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Values.LOGIN_FAIL);
+
+    }
+
+    private Optional<ButtonType> userPrompt(Alert.AlertType type, String title, String msg){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+
+        return alert.showAndWait();
     }
 
     @FXML

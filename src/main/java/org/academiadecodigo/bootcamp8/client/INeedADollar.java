@@ -5,8 +5,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionServiceImpl;
-import org.academiadecodigo.bootcamp8.client.service.loginservice.LoginService;
-import org.academiadecodigo.bootcamp8.client.service.loginservice.LoginServiceImpl;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionService;
 import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
@@ -35,11 +33,9 @@ public class INeedADollar extends Application {
 
         ConnectionService connectionService = new ConnectionServiceImpl();
         SessionService sessionService = new SessionServiceImpl();
-        LoginService login = new LoginServiceImpl();
 
         ServiceRegistry.getInstance().addService(connectionService.getName(), connectionService);
         ServiceRegistry.getInstance().addService(sessionService.getName(), sessionService);
-        ServiceRegistry.getInstance().addService(login.getName(), login);
 
 
         Navigation navigation = Navigation.getInstance();
