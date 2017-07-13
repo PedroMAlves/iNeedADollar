@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -15,7 +16,9 @@ import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Controller{
+public class LoginController implements Controller {
+
+    private TextField eMail;
 
     @FXML
     private VBox box;
@@ -27,7 +30,7 @@ public class LoginController implements Controller{
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private Button login;
@@ -54,12 +57,12 @@ public class LoginController implements Controller{
     @FXML
     void onLogin(ActionEvent event) {
         if (login.getText().equals("Login")) {
-            if(isLoginFieldEmpty()){
+            if (isLoginFieldEmpty()) {
                 return;
-            }else{
+            } else {
                 //authenticate();
             }
-        }else {
+        } else {
             /*if (isAnyFieldEmpty()) {
                 return;
             }else{
@@ -78,8 +81,31 @@ public class LoginController implements Controller{
 
     @FXML
     void onRegister(ActionEvent event) {
-        login.setText("Register");
+        if (login.getText().equals("login")) {
+            eMailCreate();
+            login.setText("register");
+            register.setText("login");
+            return;
+        }
+        login.getText().equals("register");
+        login.setText("login");
+        register.setText("register");
+        eMailRemove();
+    }
 
+    private void eMailRemove() {
+        loginGrid.getChildren().remove(eMail);
+        loginGrid.getRowConstraints().get(2).setMinHeight(20);
+    }
+
+    private void eMailCreate() {
+        eMail = new TextField();
+        eMail.setMaxWidth(300);
+        eMail.setMaxHeight(16);
+        eMail.setPromptText("E-Mail_");
+        eMail.setStyle("-fx-border-style: solid");
+        loginGrid.addRow(2, eMail);
+        loginGrid.getRowConstraints().get(2).setMinHeight(40);
     }
 
     private Stage stage;
