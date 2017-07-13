@@ -26,7 +26,7 @@ public class ClientHandler implements Runnable {
         setStreams();
         login();
         while(run) {
-            read();
+          //  read();
         }
 
     }
