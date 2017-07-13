@@ -87,19 +87,20 @@ public class LoginController implements Controller {
 
     @FXML
     void onLogin(ActionEvent event) {
-        if (login.getText().equals("Login")) {
-            if (isLoginFieldEmpty()) {
-                return;
-            } else {
-                authenticate();
+
+        if (login.getText().equals("login")) {
+           if (isLoginFieldEmpty()) {
+               return;
+           } else {
+        authenticate();
             }
-        } else {
-            /*if (isAnyFieldEmpty()) {
+        } /*else {
+            if (isAnyFieldEmpty()) {
                 return;
             }else{
                 addUser();
-            }*/
-        }
+            }
+       }*/
     }
 
     private boolean isLoginFieldEmpty() {
@@ -112,7 +113,9 @@ public class LoginController implements Controller {
 
     private void authenticate() {
         connectionService.authenticateUser(username.getText(), password.getText());
+
         String reply = connectionService.getReply();
+
 
         if (reply.equals(Values.LOGIN_OK)) {
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);

@@ -50,12 +50,15 @@ public class ClientHandler implements Runnable {
         while (true) {
             Message<String[]> str = null;
             try {
+                System.out.println("msg enviada do cliente ");
                 str = (Message<String[]>) objectInputStream.readObject();
+
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("error reading from stream " + e.getMessage());
             }
 
             String[] s = str.getContent();
+            System.out.println(s[0] + s[1]);
             if (userService.authenticate(s[0], s[1])){
                 try {
                     objectOutputStream.writeObject(Values.LOGIN_OK);
