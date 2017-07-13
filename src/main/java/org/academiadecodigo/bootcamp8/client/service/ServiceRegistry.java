@@ -39,8 +39,8 @@ public class ServiceRegistry {
 
     }
 
-    public <T extends Service> T getService(String service) {
-        return (T) services.get(service);
+    public <T extends Service> T getService(Class<T> classCast) {
+        return (T) services.get(classCast.getSimpleName());
 
     }
 

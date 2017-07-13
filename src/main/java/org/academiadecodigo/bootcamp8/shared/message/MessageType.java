@@ -3,12 +3,13 @@ package org.academiadecodigo.bootcamp8.shared.message;
 
 public enum MessageType {
 
+    LOGIN,
+    REGISTER,
+
     DATA,
     TEXT,
     PRIVATE_TEXT,
     KEY,
-    LOGIN,
-    REGISTER,
     USERS_ONLINE,
     PROFILE,
     BIO,

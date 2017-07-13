@@ -3,9 +3,11 @@ package org.academiadecodigo.bootcamp8.client;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.academiadecodigo.bootcamp8.client.service.LoginService;
-import org.academiadecodigo.bootcamp8.client.service.LoginServiceImpl;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
+import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionService;
+import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 
@@ -19,31 +21,22 @@ import java.net.Socket;
  */
 
 public class INeedADollar extends Application {
-    Socket socket;
-    ObjectInputStream objectInputStream;
-    ObjectOutputStream objectOutputStream;
 
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        try {
-            socket = new Socket("127.0.0.1", 4040);
-            System.out.println("connected");
-            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            objectInputStream = new ObjectInputStream(socket.getInputStream());
-             System.out.println("connected to server, opened sockets");
 
-        } catch (IOException e) {
-            System.err.println("Unable to connect to server");
-        }
+        ConnectionService connectionService = new ConnectionServiceImpl();
+        SessionService sessionService = new SessionServiceImpl();
 
-        objectOutputStream.writeObject(new String("sdghsgkjhfsg"));
+        ServiceRegistry.getInstance().addService(connectionService.getName(), connectionService);
+        ServiceRegistry.getInstance().addService(sessionService.getName(), sessionService);
 
-
-        LoginService login = new LoginServiceImpl();
-        ServiceRegistry.getInstance().addService(login.getName(), login);
 
         Navigation navigation = Navigation.getInstance();
         navigation.setStage(primaryStage);
@@ -54,8 +47,5 @@ public class INeedADollar extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
 }
