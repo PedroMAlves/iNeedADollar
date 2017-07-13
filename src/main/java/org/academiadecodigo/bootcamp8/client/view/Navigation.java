@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.academiadecodigo.bootcamp8.client.controller.Controller;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 
 import java.io.IOException;
@@ -31,10 +32,6 @@ public final class Navigation {
         this.stage = stage;
     }
 
-    public Initializable getController(String view) {
-        return controllers.get(view);
-    }
-
     private Navigation(){}
 
     public static Navigation getInstance() {
@@ -42,17 +39,15 @@ public final class Navigation {
             instance = new Navigation();
         }
         return instance;
-
     }
 
     public void loadScreen(String view) {
 
         try {
-            FXMLLoader fxmlLoader;
-            fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH + view + ".fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH + view + ".fxml"));
             Parent root = fxmlLoader.load();
 
-            fxmlLoader.getController()
+            ((Controller) fxmlLoader.getController()).setStage(stage);
             controllers.put(view, fxmlLoader.<Initializable>getController());
 
             Scene scene = new Scene(root, Utilities.SCREEN_MIN_WIDTH, Utilities.SCREEN_MIN_HEIGHT);
