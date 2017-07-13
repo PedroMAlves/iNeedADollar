@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp8.server.handler;
 
+import org.academiadecodigo.bootcamp8.shared.message.Message;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -42,19 +44,18 @@ public class ClientHandler implements Runnable {
     }
 
     private void login() {
-        try {
-            System.out.println("going to read from stream");
+        while (true) {
+            Message<String[]> str = null;
             try {
-                String string = (String) objectInputStream.readObject();
-                System.out.println(string);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                str = (Message<String[]>) objectInputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                System.err.println("error reading from stream " + e.getMessage());
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (str.getContent();
         }
+
     }
+
 
     private void read() {
 
