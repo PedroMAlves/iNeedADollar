@@ -14,6 +14,7 @@ public class Utilities {
 
     public static final String EMAIL_REGEX = "\\b[A-Za-z0-9._+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b";
     public static final String LOGIN_MANAGER = "I Need a Dollar login";
+    public static final String EMPTY_FIELDS = "Please make sure you do not have any blank fields";
 
     public static boolean isEmailValid(String email) {
         return email.matches(Utilities.EMAIL_REGEX);

@@ -51,6 +51,7 @@ public class ClientHandler implements Runnable {
             Message<String[]> str = null;
             try {
                 str = (Message<String[]>) objectInputStream.readObject();
+                System.out.println(str);
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("error reading from stream " + e.getMessage());
             }
@@ -76,6 +77,6 @@ public class ClientHandler implements Runnable {
 
 
     private void read() {
-        
+
     }
 }

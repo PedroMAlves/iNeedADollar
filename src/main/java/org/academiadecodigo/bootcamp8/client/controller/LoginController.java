@@ -87,8 +87,9 @@ public class LoginController implements Controller {
 
     @FXML
     void onLogin(ActionEvent event) {
-        if (login.getText().equals("Login")) {
+        if (login.getText().equals("login")) {
             if (isLoginFieldEmpty()) {
+                userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, Utilities.EMPTY_FIELDS);
                 return;
             } else {
                 authenticate();
@@ -112,6 +113,7 @@ public class LoginController implements Controller {
 
     private void authenticate() {
         connectionService.authenticateUser(username.getText(), password.getText());
+
         String reply = connectionService.getReply();
 
         if (reply.equals(Values.LOGIN_OK)) {
