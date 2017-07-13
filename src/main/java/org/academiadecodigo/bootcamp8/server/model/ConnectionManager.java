@@ -15,6 +15,10 @@ import java.util.List;
 public class ConnectionManager {
     private Connection connection;
 
+    public ConnectionManager() {
+        connection = getConnection();
+    }
+
     /**
      * Gets the connection to the DB
      *
@@ -91,9 +95,11 @@ public class ConnectionManager {
     public User findUser(String username) throws SQLException {
 
         User user = null;
+        System.out.println(username);
         PreparedStatement statement = connection.prepareStatement(Queries.SELECT_USER);
         statement.setString(1, username);
         ResultSet resultSet = statement.executeQuery();
+        System.out.println(resultSet);
 
         if (resultSet.next()) {
 
@@ -103,7 +109,6 @@ public class ConnectionManager {
         }
 
         statement.close();
-
         return user;
     }
 

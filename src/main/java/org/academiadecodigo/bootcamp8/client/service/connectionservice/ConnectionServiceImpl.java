@@ -35,6 +35,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         String[] msgArr = {username, password};
         Message msg = new Message<String[]> (MessageType.LOGIN, msgArr);
         try {
+            System.out.println("Mensagem enviada para o server");
             objectOutputStream.writeObject(msg);
         } catch (IOException e) {
             System.err.println("Unable to write object.");
