@@ -14,11 +14,11 @@ public class Queries {
     public static final String INSERT_USER = "INSERT INTO user(user_name, user_password) VALUES(?, ?)";
     public static final String COUNT_USERS = "SELECT COUNT(*) FROM users";
 
-    public static final String INSERT_INTO_BIO = "INSERT INTO bio(user_name, name, email, date_birth, location, bio) VALUES (?,?,?,?,?,?)";
+    public static final String INSERT_INTO_BIO = "INSERT INTO bio(user_bio, name, email, date_birth, location, bio) VALUES (?,?,?,?,?,?)";
     public static final String UPDATE_BIO = "UPDATE bio SET name = ?, email = ? , date_birth = ? , location =? , bio = ? WHERE user_name = ? ";
     public static final String SHOW_BIO = "SELECT * FROM bio WHERE user_name = ?";
 
-    public static final String INSERT_ACCOUNT = "INSERT INTO account(user_name, balance) VALUES (?, ?)";
+    public static final String INSERT_ACCOUNT = "INSERT INTO account(user_account, balance) VALUES (?, ?)";
 
 }
 

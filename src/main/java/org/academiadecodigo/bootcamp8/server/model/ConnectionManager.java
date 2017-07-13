@@ -208,7 +208,7 @@ public class ConnectionManager {
         List<String> userbio = new LinkedList<String>();
 
         if (resultSet.next()) {
-            userbio.add(resultSet.getString("user_name"));
+            userbio.add(resultSet.getString("user_bio"));
             userbio.add(resultSet.getString("name"));
             userbio.add(resultSet.getString("email"));
             userbio.add(resultSet.getString("date_birth"));
