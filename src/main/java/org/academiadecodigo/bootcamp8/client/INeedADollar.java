@@ -11,11 +11,6 @@ import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServi
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-
 /**
  * Created by Prashanta on 13/07/17.
  */
