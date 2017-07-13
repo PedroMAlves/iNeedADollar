@@ -32,7 +32,11 @@ public class ClientHandler implements Runnable {
     }
 
     private void login() {
-
+        try {
+            System.out.println(objectInputStream.read());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setStreams() {
