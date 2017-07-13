@@ -7,6 +7,7 @@ import org.academiadecodigo.bootcamp8.client.service.Service;
  */
 public interface ConnectionService extends Service {
     void authenticateUser(String username, String password);
+    void close();
 
     String getReply();
 }
