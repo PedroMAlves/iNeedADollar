@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp8.server.handler;
 
+import org.academiadecodigo.bootcamp8.server.service.UserService;
+import org.academiadecodigo.bootcamp8.shared.Values;
 import org.academiadecodigo.bootcamp8.shared.message.Message;
 
 import java.io.IOException;
@@ -14,10 +16,12 @@ public class ClientHandler implements Runnable {
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
     private Socket clientSocket;
+    private UserService userService;
     boolean run;
 
-    public ClientHandler(Socket clientSocket) {
+    public ClientHandler(Socket clientSocket, UserService userService) {
         this.clientSocket = clientSocket;
+        this.userService = userService;
         run = true;
 
     }
@@ -32,7 +36,6 @@ public class ClientHandler implements Runnable {
         }
 
     }
-
 
     private void setStreams() {
         try {
@@ -51,13 +54,28 @@ public class ClientHandler implements Runnable {
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("error reading from stream " + e.getMessage());
             }
-            if (str.getContent();
+
+            String[] s = str.getContent();
+            if (userService.authenticate(s[0], s[1])){
+                try {
+                    objectOutputStream.writeObject(Values.LOGIN_OK);
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            try {
+                objectOutputStream.writeObject(Values.LOGIN_FAIL);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
 
 
     private void read() {
-
+        
     }
 }

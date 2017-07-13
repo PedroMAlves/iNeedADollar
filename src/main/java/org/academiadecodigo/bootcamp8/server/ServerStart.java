@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp8.server;
 
-import org.academiadecodigo.bootcamp8.server.service.MockUserService;
+import org.academiadecodigo.bootcamp8.server.model.ConnectionManager;
+import org.academiadecodigo.bootcamp8.server.service.JdbcUserService;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
 
 import java.io.IOException;
@@ -14,8 +15,10 @@ public class ServerStart {
     public static void main(String[] args) {
 
         Server server;
-        //ConnectionManager connectionManager = new ConnectionManager();
-        UserService userService = new Jdbc();
+        ConnectionManager connectionManager = new ConnectionManager();
+        UserService userService = new JdbcUserService(connectionManager);
+
+
 
         if (args.length < 1 || Integer.parseInt(args[0]) < 1025) {
             System.out.println("Connect client to port 4040.");

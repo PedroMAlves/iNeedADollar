@@ -22,7 +22,7 @@ public class ConnectionManager {
      */
     public Connection getConnection() {
 
-        final String URL = "jdbc:mysql://localhost:3306/freespeech";
+        final String URL = "jdbc:mysql://localhost:3306/dollar";
         final String USER = "root";
         final String PASSWORD = "";
 
@@ -59,6 +59,11 @@ public class ConnectionManager {
             statement = connection.prepareStatement(Queries.INSERT_INTO_BIO);
             statement.setString(1, username);
             statement.executeUpdate();
+            statement = connection.prepareStatement(Queries.INSERT_ACCOUNT);
+            statement.setString(1, username);
+            statement.setString(2, "5");      // Remove magic number from here
+            statement.executeUpdate();
+
 
         } catch (SQLException e) {
             registered = false;
@@ -203,9 +208,11 @@ public class ConnectionManager {
         List<String> userbio = new LinkedList<String>();
 
         if (resultSet.next()) {
-            userbio.add(resultSet.getString("user_name"));
+            userbio.add(resultSet.getString("user_bio"));
+            userbio.add(resultSet.getString("name"));
             userbio.add(resultSet.getString("email"));
             userbio.add(resultSet.getString("date_birth"));
+            userbio.add(resultSet.getString("location"));
             userbio.add(resultSet.getString("bio"));
         }
 
@@ -221,9 +228,10 @@ public class ConnectionManager {
      * @param email     new email information
      * @param dateBirth new date birth information
      * @param bio       new bio information
-     * @return true if the operation was successful
+     * @param
+     *@param  @return true if the operation was successful
      */
-    public boolean updateBio(String username, String email, String dateBirth, String bio) {
+    public boolean updateBio(String username, String name , String email, String dateBirth, String location, String bio) {
 
         PreparedStatement statement = null;
         boolean updated = true;
@@ -231,10 +239,11 @@ public class ConnectionManager {
         try {
 
             statement = connection.prepareStatement(Queries.UPDATE_BIO);
-            statement.setString(1, email);
-            statement.setString(2, dateBirth);
-            statement.setString(3, bio);
-            statement.setString(4, username);
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, dateBirth);
+            statement.setString(4, location);
+            statement.setString(5, bio);
             statement.execute();
 
         } catch (SQLException e) {
@@ -253,101 +262,10 @@ public class ConnectionManager {
         return updated;
     }
 
-    /**
-     * Report a specific user
-     *
-     * @param username      the user who reported
-     * @param user_reported the reported user
-     */
-    public void reportUser(String username, String user_reported) {
 
-        PreparedStatement statement = null;
 
-        try {
 
-            statement = connection.prepareStatement(Queries.REPORT_USER);
-            statement.setString(1, username);
-            statement.setString(2, user_reported);
-            statement.execute();
 
-        } catch (SQLException e) {
-        } finally {
-
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (SQLException e) {
-            }
-
-        }
-
-    }
-
-    /**
-     * Count the number of times the user reported was already reported by username
-     *
-     * @param username      the user who reported
-     * @param user_reported the reported user
-     * @return the count of reports
-     */
-    public int verifyReport(String username, String user_reported) {
-
-        PreparedStatement statement = null;
-        ResultSet resultSet;
-        try {
-
-            statement = connection.prepareStatement(Queries.REPORTED_USER);
-            statement.setString(1, username);
-            statement.setString(2, user_reported);
-            resultSet = statement.executeQuery();
-            return resultSet.next() ? resultSet.getInt(1) : 0;
-
-        } catch (SQLException e) {
-        } finally {
-
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (SQLException e) {
-            }
-
-        }
-
-        return 0;
-    }
-
-    /**
-     * Get the number of reports of username
-     *
-     * @param username to target
-     * @return the number of reports
-     */
-    public int verifyUserReported(String username) {
-        PreparedStatement statement = null;
-        ResultSet resultSet;
-        try {
-
-            statement = connection.prepareStatement(Queries.COUNT_REPORTED);
-            statement.setString(1, username);
-            resultSet = statement.executeQuery();
-            return resultSet.next() ? resultSet.getInt(1) : 0;
-
-        } catch (SQLException e) {
-        } finally {
-
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (SQLException e) {
-            }
-
-        }
-
-        return 0;
-    }
 
     /**
      * Close the connection to the database
