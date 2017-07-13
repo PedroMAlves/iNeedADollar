@@ -16,10 +16,14 @@ public class ServiceRegistry {
 
     }
 
-    public static synchronized ServiceRegistry getInstance() {
+    public static ServiceRegistry getInstance() {
 
         if (instance == null) {
-            instance = new ServiceRegistry();
+            synchronized (ServiceRegistry.class) {
+                if (instance == null) {
+                    instance = new ServiceRegistry();
+                }
+            }
         }
 
         return instance;
