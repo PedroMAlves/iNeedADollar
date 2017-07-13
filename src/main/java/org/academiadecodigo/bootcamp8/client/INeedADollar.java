@@ -15,10 +15,12 @@ public class INeedADollar extends Application {
 
     @Override
     public void init() {
+
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        
         Navigation navigation = Navigation.getInstance();
         navigation.setStage(primaryStage);
 

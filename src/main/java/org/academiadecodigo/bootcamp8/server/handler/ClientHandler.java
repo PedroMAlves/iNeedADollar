@@ -25,19 +25,12 @@ public class ClientHandler implements Runnable {
     public void run() {
         setStreams();
         login();
-        while(run) {
-          //  read();
+        while (run) {
+            read();
         }
 
     }
 
-    private void login() {
-        try {
-            System.out.println(objectInputStream.read());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void setStreams() {
         try {
@@ -46,5 +39,18 @@ public class ClientHandler implements Runnable {
         } catch (IOException e) {
             System.err.println("Unable to open  objectStreams");
         }
+    }
+
+    private void login() {
+        try {
+            System.out.println("going to read from stream");
+            System.out.println(objectInputStream.read());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void read() {
+
     }
 }

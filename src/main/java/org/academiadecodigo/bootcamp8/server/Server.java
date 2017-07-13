@@ -34,8 +34,9 @@ public class Server {
         ExecutorService cachedPool = Executors.newCachedThreadPool();
 
         while (true) {
-
+            System.out.println("here");
             Socket clientSocket = serverSocket.accept();
+            System.out.println("after socket");
             cachedPool.submit(new ClientHandler(clientSocket));
         }
     }
