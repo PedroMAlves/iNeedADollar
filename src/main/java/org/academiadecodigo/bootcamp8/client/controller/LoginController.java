@@ -26,6 +26,4 @@ public class LoginController {
     @FXML
     private Hyperlink help;
 
-
-
 }
