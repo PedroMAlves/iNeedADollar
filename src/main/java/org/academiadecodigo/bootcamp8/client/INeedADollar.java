@@ -3,9 +3,18 @@ package org.academiadecodigo.bootcamp8.client;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.academiadecodigo.bootcamp8.client.controller.LoginController;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionServiceImpl;
+import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
+import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionService;
+import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 /**
  * Created by Prashanta on 13/07/17.
@@ -13,12 +22,22 @@ import org.academiadecodigo.bootcamp8.client.view.Navigation;
 
 public class INeedADollar extends Application {
 
-    @Override
-    public void init() {
+
+    public static void main(String[] args) {
+        launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        ConnectionService connectionService = new ConnectionServiceImpl();
+        SessionService sessionService = new SessionServiceImpl();
+
+        ServiceRegistry.getInstance().addService(connectionService.getName(), connectionService);
+        ServiceRegistry.getInstance().addService(sessionService.getName(), sessionService);
+
+
         Navigation navigation = Navigation.getInstance();
         navigation.setStage(primaryStage);
 
@@ -28,8 +47,5 @@ public class INeedADollar extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
 }

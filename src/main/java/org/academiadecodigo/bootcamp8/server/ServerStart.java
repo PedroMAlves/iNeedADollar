@@ -6,8 +6,7 @@ import org.academiadecodigo.bootcamp8.server.service.MockUserService;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
 
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+
 
 /**
  * Created by Prashanta on 13/07/17.

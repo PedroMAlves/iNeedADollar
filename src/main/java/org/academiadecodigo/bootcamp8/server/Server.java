@@ -19,6 +19,7 @@ public class Server {
 
     public Server(UserService userService) {
       this.userService = userService;
+      Server.PORT = 4040;
     }
 
 
@@ -34,8 +35,9 @@ public class Server {
         ExecutorService cachedPool = Executors.newCachedThreadPool();
 
         while (true) {
-
+            System.out.println("here");
             Socket clientSocket = serverSocket.accept();
+            System.out.println("after socket");
             cachedPool.submit(new ClientHandler(clientSocket));
         }
     }
