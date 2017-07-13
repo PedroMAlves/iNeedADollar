@@ -34,12 +34,26 @@ public class ConnectionServiceImpl implements ConnectionService {
     public void authenticateUser(String username, String password) {
         String[] msgArr = {username, password};
         Message msg = new Message<String[]> (MessageType.LOGIN, msgArr);
+
         try {
             objectOutputStream.writeObject(msg);
         } catch (IOException e) {
             System.err.println("Unable to write object.");
         }
     }
+
+    @Override
+    public void registerUser(String username, String password, String email) {
+        String[] msgArr = {username, password, email};
+        Message msg = new Message(MessageType.REGISTER, msgArr);
+
+        try {
+            objectOutputStream.writeObject(msg);
+        } catch (IOException e) {
+            System.err.println("Unable to write object.");
+        }
+    }
+
 
     @Override
     public String getReply() {
@@ -56,5 +70,14 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public String getName() {
         return ConnectionService.class.getSimpleName();
+    }
+
+    @Override
+    public void close() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

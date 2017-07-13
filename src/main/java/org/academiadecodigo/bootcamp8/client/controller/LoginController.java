@@ -95,11 +95,12 @@ public class LoginController implements Controller {
                 authenticate();
             }
         } else {
-            /*if (isAnyFieldEmpty()) {
+            if (isAnyFieldEmpty()) {
+                userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, Utilities.EMPTY_FIELDS);
                 return;
             }else{
                 addUser();
-            }*/
+            }
         }
     }
 
@@ -111,10 +112,18 @@ public class LoginController implements Controller {
         return false;
     }
 
+    private boolean isAnyFieldEmpty() {
+        if (isLoginFieldEmpty() || eMail.getText().isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
     private void authenticate() {
         connectionService.authenticateUser(username.getText(), password.getText());
 
         String reply = connectionService.getReply();
+
 
         if (reply.equals(Values.LOGIN_OK)) {
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
@@ -125,7 +134,39 @@ public class LoginController implements Controller {
 
     }
 
+    private void addUser() {
+        if (!Utilities.isUsernameValid(username.getText())) {
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, );
+            return;
+        }
+        if (!Utilities.isEmailValid(eMail.getText())) {
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, );
+
+            return;
+        }
+        if (!Utilities.isPasswordValid(password.getText())) {
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, );
+
+            return;
+        }
+        connectionService.registerUser(username.getText(), password.getText(), eMail.getText());
+
+        String s = connectionService.getReply();
+        roleService.setGuest(curr);
+        authenticationService.addUser(curr);
+        if (prevSize == authenticationService.count()) {
+            logConsole.setText(Utils.USER_TAKEN);
+            return;
+        }
+        sessionService.setLoggedUser(curr);
+        setTextGreen();
+        logConsole.setText(Utils.REGISTER_OK);
+        showLogin();
+        emailField.setText(Utils.SET_BLANK);
+    }
+
     private Optional<ButtonType> userPrompt(Alert.AlertType type, String title, String msg){
+
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -171,6 +212,7 @@ public class LoginController implements Controller {
 
     @FXML
     void onClose(ActionEvent event) {
+        connectionService.close();
         Navigation.getInstance().close();
     }
 

@@ -53,7 +53,7 @@ public class JdbcUserService implements UserService {
         } catch (SQLException e) {
 
         }
-
+        System.out.println(user);
         return user;
     }
 
