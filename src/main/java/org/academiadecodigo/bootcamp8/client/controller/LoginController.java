@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
+import org.academiadecodigo.bootcamp8.client.service.loginservice.LoginService;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 
 import java.net.URL;
@@ -41,9 +43,39 @@ public class LoginController implements Controller{
     @FXML
     private Hyperlink close;
 
-    @FXML
-    void onClose(ActionEvent event) {
-        Navigation.getInstance().close();
+    private Stage stage;
+    private double x;
+    private double y;
+    private LoginService loginService;
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setDraggable();
+        loginService = ServiceRegistry.getInstance().getService(LoginService.class);
+
+
+    }
+
+
+    private void setDraggable() {
+
+        box.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                x = event.getSceneX();
+                y = event.getSceneY();
+            }
+        });
+
+        box.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - x);
+                stage.setY(event.getScreenY() - y);
+            }
+        });
     }
 
     @FXML
@@ -82,37 +114,16 @@ public class LoginController implements Controller{
 
     }
 
-    private Stage stage;
 
-    private double x;
-    private double y;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        setDraggable();
-    }
-
-    private void setDraggable() {
-
-        box.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                x = event.getSceneX();
-                y = event.getSceneY();
-            }
-        });
-
-        box.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - x);
-                stage.setY(event.getScreenY() - y);
-            }
-        });
-    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    @FXML
+    void onClose(ActionEvent event) {
+        Navigation.getInstance().close();
+    }
+
 
 }
