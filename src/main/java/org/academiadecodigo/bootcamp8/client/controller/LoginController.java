@@ -36,10 +36,14 @@ public class LoginController implements Controller{
     @FXML
     private Hyperlink help;
 
+    @FXML
+    private Hyperlink close;
+
     private Stage stage;
 
     private double x;
     private double y;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDraggable();
