@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,9 +17,6 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public final class Navigation {
-
-    public final static int MIN_WIDTH = 470;
-    public final static int MIN_HEIGHT = 300;
 
     public final static String VIEW_PATH = "/view/";
 
@@ -54,9 +52,10 @@ public final class Navigation {
             fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH + view + ".fxml"));
             Parent root = fxmlLoader.load();
 
+            fxmlLoader.getController()
             controllers.put(view, fxmlLoader.<Initializable>getController());
 
-            Scene scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
+            Scene scene = new Scene(root, Utilities.SCREEN_MIN_WIDTH, Utilities.SCREEN_MIN_HEIGHT);
             scenes.push(scene);
 
             setScene(scene);
