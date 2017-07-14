@@ -93,6 +93,7 @@ public class LoginController implements Controller {
                 return;
             } else {
                 authenticate();
+                clearFields();
             }
         } else {
             if (isAnyFieldEmpty()) {
@@ -126,6 +127,7 @@ public class LoginController implements Controller {
 
 
         if (reply.equals(Values.LOGIN_OK)) {
+            connectionService.setLoggedUser(username.getText());
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
             return;
         }
@@ -139,16 +141,17 @@ public class LoginController implements Controller {
             userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_USER );
             return;
         }
-        if (!Utilities.isEmailValid(eMail.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_EMAIL);
 
-            return;
-        }
         if (!Utilities.isPasswordValid(password.getText())) {
             userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_PASS);
-
             return;
         }
+
+        if (!Utilities.isEmailValid(eMail.getText())) {
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_EMAIL);
+            return;
+        }
+
         connectionService.registerUser(username.getText(), password.getText(), eMail.getText());
 
         String s = connectionService.getReply();
@@ -171,6 +174,11 @@ public class LoginController implements Controller {
         alert.setContentText(msg);
 
         return alert.showAndWait();
+    }
+
+    private void clearFields(){
+        
+
     }
 
     @FXML
