@@ -12,6 +12,7 @@ import java.net.Socket;
  * Created by Prashanta on 13/07/17.
  */
 public class ConnectionServiceImpl implements ConnectionService {
+
     Socket socket;
     ObjectInputStream objectInputStream;
     ObjectOutputStream objectOutputStream;
@@ -95,6 +96,22 @@ public class ConnectionServiceImpl implements ConnectionService {
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error reading stream " + e.getMessage());
         }
+        return msg;
+    }
+
+    @Override
+    public String requestDollar(String[] insert) {
+
+        String msg = null;
+        try {
+
+            objectOutputStream.writeObject(new Message<String[]>(MessageType.ASKDOLLAR, insert));
+            msg = (String) objectInputStream.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         return msg;
     }
 

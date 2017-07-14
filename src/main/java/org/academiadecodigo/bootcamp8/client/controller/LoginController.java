@@ -89,7 +89,7 @@ public class LoginController implements Controller {
     void onLogin(ActionEvent event) {
         if (login.getText().equals("login")) {
             if (isLoginFieldEmpty()) {
-                userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, Utilities.EMPTY_FIELDS);
+                Utilities.userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, Utilities.EMPTY_FIELDS);
                 return;
             } else {
                 authenticate();
@@ -97,7 +97,7 @@ public class LoginController implements Controller {
             }
         } else {
             if (isAnyFieldEmpty()) {
-                userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, Utilities.EMPTY_FIELDS);
+                Utilities.userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, Utilities.EMPTY_FIELDS);
                 return;
             }else{
                 addUser();
@@ -133,23 +133,23 @@ public class LoginController implements Controller {
             return;
         }
 
-        userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, reply);
+        Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, reply);
 
     }
 
     private void addUser() {
         if (!Utilities.isUsernameValid(username.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_USER );
+            Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_USER );
             return;
         }
 
         if (!Utilities.isPasswordValid(password.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_PASS);
+            Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_PASS);
             return;
         }
 
         if (!Utilities.isEmailValid(eMail.getText())) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_EMAIL);
+            Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, Utilities.INVALID_EMAIL);
             return;
         }
 
@@ -158,23 +158,13 @@ public class LoginController implements Controller {
         String s = connectionService.getReply();
 
         if (s.equals(Values.REGISTER_OK)) {
-            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, s);
+            Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, s);
             eMailRemove();
             login.setText("login");
             register.setText("register");
             return;
         }
-        userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, s);
-    }
-
-    private Optional<ButtonType> userPrompt(Alert.AlertType type, String title, String msg){
-
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
-
-        return alert.showAndWait();
+        Utilities.userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, s);
     }
 
     @FXML

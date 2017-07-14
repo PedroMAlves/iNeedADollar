@@ -32,7 +32,7 @@
         </rowConstraints>
          <children>
               <TextField fx:id="username" maxWidth="300.0" promptText="Username_" style="-fx-border-style: solid;" />
-              <PasswordField fx:id="password" maxWidth="300.0" prefHeight="16.0" prefWidth="300.0" promptText="Password_" style="-fx-border-style: solid;" GridPane.rowIndex="1" />
+              <PasswordField fx:id="password" maxWidth="300.0" onAction="#onLogin" prefHeight="16.0" prefWidth="300.0" promptText="Password_" style="-fx-border-style: solid;" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Button fx:id="login" mnemonicParsing="false" onAction="#onLogin" prefWidth="300.0" style="-fx-background-color: BLACK; -fx-border-style: SOLID;" text="login" textFill="WHITE" />

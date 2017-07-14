@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import javafx.scene.control.Button;
 
@@ -73,6 +74,14 @@ public class MainViewController implements Controller {
 
     @FXML
     void sendDollarRequest(ActionEvent event) {
+
+        String[] insert = {username.getText(), whyDollar.getText()};
+
+        String str = connectionService.requestDollar(insert);
+
+        Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.REQUEST_DOLLARS, str);
+
+        whyDollar.setText("");
 
     }
 
