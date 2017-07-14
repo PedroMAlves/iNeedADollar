@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp8.client.controller;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,8 +12,7 @@ import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
-import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
-import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,10 +23,7 @@ public class MainViewController implements Controller {
     private TabPane tab;
 
     @FXML
-    private Tab whoNeedsDollar;
-
-    @FXML
-    private ListView<?> historyList;
+    private ListView<?> whoNeedsDollar;
 
     @FXML
     private Tab iNeedDollar;
@@ -38,10 +35,10 @@ public class MainViewController implements Controller {
     private TextArea whyDollar;
 
     @FXML
-    private Tab transactions;
+    private Button whyDollarButton;
 
     @FXML
-    private ListView<?> historyList2;
+    private ListView<?> transactionList;
 
     @FXML
     private Hyperlink close;
@@ -51,6 +48,34 @@ public class MainViewController implements Controller {
 
     @FXML
     private Label balance;
+
+    @FXML
+    private Tab transactions;
+
+    @FXML
+    private ListView<?> transactionsList;
+
+    @FXML
+    void needsDollarPrompt(MouseEvent event) {
+
+    }
+
+    @FXML
+    void sendDollarRequest(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateDollarNeeds(ActionEvent event) {
+    }
+
+    @FXML
+    void updateTransactions(ActionEvent event) {
+    }
+
+
+    @FXML
+    private Button pay;
 
     @FXML
     private Label username;
@@ -89,6 +114,11 @@ public class MainViewController implements Controller {
     }
 
     @FXML
+    void pay(ActionEvent event) {
+
+    }
+
+    @FXML
     void close(ActionEvent event) {
 
         connectionService.close();
@@ -108,6 +138,8 @@ public class MainViewController implements Controller {
         this.stage = stage;
     }
 
+    public void updateDollarNeeds(Event event) {
+    }
 }
 
 

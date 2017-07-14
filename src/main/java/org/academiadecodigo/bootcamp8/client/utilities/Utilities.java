@@ -6,7 +6,7 @@ package org.academiadecodigo.bootcamp8.client.utilities;
 public class Utilities {
 
     public final static int SCREEN_MIN_WIDTH = 720;
-    public final static int SCREEN_MIN_HEIGHT = 420;
+    public final static int SCREEN_MIN_HEIGHT = 405;
     public final static String ICON = "/view/possible-logo.png";
     public static final String LOGIN_VIEW= "login";
     public static final String MAIN_VIEW= "main";
