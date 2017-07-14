@@ -21,26 +21,24 @@ CREATE TABLE bio (
 
 
 CREATE TABLE account  ( 
-  user_account		CHAR(15)  NOT NULL,
-  balance		INTEGER   NOT NULL, 	
+  user_account	CHAR(15)  NOT NULL,
+  balance		INTEGER  , 	
   PRIMARY KEY (user_account),
   FOREIGN KEY (user_account) REFERENCES user(user_name) ON DELETE CASCADE
 );
 
 
 CREATE TABLE request (
-  request_id 	INTEGER AUTO_INCREMENT, 
-  user_name_request 		CHAR(15) NOT NULL,
-  user_name_answer		CHAR(15) NOT NULL,
-  operation_id			INTEGER NOT NULL,
+  request_id 			INTEGER AUTO_INCREMENT, 
+  user_name_request 	CHAR(15) NOT NULL,
+  user_name_answer		CHAR(15),
+  operation_id			INTEGER ,
   request_motiv 		CHAR(50),
   request_answer		CHAR(50),
   state 				CHAR(10), 
   date_request 			DATE,
-  PRIMARY KEY (request_id, user_name_request, user_name_answer, operation_id),
-  FOREIGN KEY (user_name_request) REFERENCES user (user_name) ,
-  FOREIGN KEY (user_name_answer) REFERENCES user (user_name) 
-  
+  PRIMARY KEY (request_id, user_name_request),
+  FOREIGN KEY (user_name_request) REFERENCES user (user_name) ON DELETE CASCADE
 );
 
 CREATE TABLE operation (

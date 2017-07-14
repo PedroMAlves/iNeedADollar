@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp8.server.handler;
 
+import org.academiadecodigo.bootcamp8.server.model.User;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
 import org.academiadecodigo.bootcamp8.shared.Values;
 import org.academiadecodigo.bootcamp8.shared.message.Message;
@@ -46,35 +47,71 @@ public class ClientHandler implements Runnable {
     }
 
     private void login() {
-        while (true) {
+        boolean exit = false;
+        while (!exit) {
             Message<String[]> str = null;
             try {
                 str = (Message<String[]>) objectInputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("error reading from stream " + e.getMessage());
             }
-
-            String[] s = str.getContent();
-            if (userService.authenticate(s[0], s[1])){
-                try {
-                    objectOutputStream.writeObject(Values.LOGIN_OK);
-                    return;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            switch (str.getType()) {
+                case LOGIN:
+                    exit = log(str.getContent());
+                    break;
+                case REGISTER:
+                    register(str.getContent());
+                    break;
 
             }
+
+        }
+    }
+
+    private boolean log(String[] str) {
+        String[] s = str;
+        if (userService.authenticate(s[0], s[1])){
             try {
-                objectOutputStream.writeObject(Values.LOGIN_FAIL);
+                objectOutputStream.writeObject(Values.LOGIN_OK);
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        try {
+            objectOutputStream.writeObject(Values.LOGIN_FAIL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private boolean register(String[] str) {
+        String[] s = str;
+        if (userService.addUser(new User(s[0], s[1], s[2]))) {
+
+            try {
+                objectOutputStream.writeObject(Values.REGISTER_OK);
+                return true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
+        try {
+            objectOutputStream.writeObject(Values.USER_TAKEN);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
-
     private void read() {
-        
+        try {
+            System.out.println(objectInputStream.readObject());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

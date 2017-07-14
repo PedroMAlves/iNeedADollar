@@ -45,7 +45,7 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public void registerUser(String username, String password, String email) {
         String[] msgArr = {username, password, email};
-        Message msg = new Message(MessageType.REGISTER, msgArr);
+        Message msg = new Message<String[]>(MessageType.REGISTER, msgArr);
 
         try {
             objectOutputStream.writeObject(msg);

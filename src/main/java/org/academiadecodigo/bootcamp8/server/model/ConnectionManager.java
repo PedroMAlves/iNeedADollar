@@ -49,9 +49,8 @@ public class ConnectionManager {
      * @param password Password of the client
      * @return true if the operation was successful
      */
-    public boolean insertUser(String username, String password) {
+    public boolean insertUser(String username, String password, String email) {
 
-        boolean registered = true;
         PreparedStatement statement = null;
 
         try {
@@ -60,17 +59,20 @@ public class ConnectionManager {
             statement.setString(1, username);
             statement.setString(2, password);
             statement.execute();
-            statement = connection.prepareStatement(Queries.INSERT_INTO_BIO);
+            statement = connection.prepareStatement(Queries.INSERT_NEW_BIO);
             statement.setString(1, username);
-            statement.executeUpdate();
+            statement.setString(2, email);
+            statement.execute();
             statement = connection.prepareStatement(Queries.INSERT_ACCOUNT);
             statement.setString(1, username);
             statement.setString(2, "5");      // Remove magic number from here
-            statement.executeUpdate();
+            statement.execute();
+            return true;
 
 
         } catch (SQLException e) {
-            registered = false;
+            System.err.println("SQL exception " + e.getMessage());;
+            return false;
 
         } finally {
 
@@ -81,8 +83,6 @@ public class ConnectionManager {
             } catch (SQLException e) {
             }
         }
-
-        return registered;
     }
 
     /**

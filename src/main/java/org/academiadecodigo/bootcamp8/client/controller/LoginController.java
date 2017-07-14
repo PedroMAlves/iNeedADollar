@@ -154,8 +154,11 @@ public class LoginController implements Controller {
         String s = connectionService.getReply();
 
         if (s.equals(Values.REGISTER_OK)) {
-           eMailRemove();
-           return;
+            userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, s);
+            eMailRemove();
+            login.setText("login");
+            register.setText("register");
+            return;
         }
         userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, s);
     }
