@@ -139,6 +139,7 @@ public class MainViewController implements Controller {
     }
 
     public void updateDollarNeeds(Event event) {
+
     }
 }
 
