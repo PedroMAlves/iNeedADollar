@@ -7,13 +7,17 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import org.academiadecodigo.bootcamp8.shared.Values;
+import org.academiadecodigo.bootcamp8.shared.sound.Sound;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -129,6 +133,9 @@ public class LoginController implements Controller {
         if (reply.equals(Values.LOGIN_OK)) {
             connectionService.setLoggedUser(username.getText());
             clearFields();
+
+            Sound.play(getClass().getResource("/sounds/cashier.wav"));
+
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
             return;
         }
@@ -162,6 +169,7 @@ public class LoginController implements Controller {
             eMailRemove();
             login.setText("login");
             register.setText("register");
+            Sound.play(getClass().getResource("/sounds/cashier.wav"));
             return;
         }
         userPrompt(Alert.AlertType.ERROR, Utilities.LOGIN_MANAGER, s);

@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp8.client.controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -15,6 +16,8 @@ import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import javafx.scene.control.Button;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Controller {
@@ -139,6 +142,7 @@ public class MainViewController implements Controller {
     }
 
     public void updateDollarNeeds(Event event) {
+
 
     }
 }
