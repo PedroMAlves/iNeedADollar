@@ -60,6 +60,20 @@ public class ConnectionServiceImpl implements ConnectionService {
         this.loggedUser = loggedUser;
     }
 
+    public String getLoggedUser() {
+        return loggedUser;
+    }
+
+    @Override
+    public void logoutUser() {
+        loggedUser = null;
+        try {
+            objectOutputStream.writeObject(new Message<String>(MessageType.LOGOUT, new String(" ")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public String getReply() {
 

@@ -6,4 +6,5 @@ public enum MessageType {
     LOGIN,
     REGISTER,
     LOGOUT
+
 }
