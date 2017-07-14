@@ -10,6 +10,7 @@ import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServi
 import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
+import org.academiadecodigo.bootcamp8.shared.sound.Sound;
 
 import javax.swing.*;
 
@@ -42,6 +43,7 @@ public class INeedADollar extends Application {
         navigation.loadScreen(Utilities.LOGIN_VIEW);
         primaryStage.setTitle("I Need a Dollar");
         primaryStage.show();
+        Sound.play(getClass().getResource("/sounds/NeedDollar.wav"));
 
         setIcon();
     }
