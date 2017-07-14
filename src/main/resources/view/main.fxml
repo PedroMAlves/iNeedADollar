@@ -18,7 +18,7 @@
          <children>
             <TabPane fx:id="tab" minHeight="360.0" minWidth="720.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0">
               <tabs>
-                <Tab fx:id="whoNeedsDollarTab" onSelectionChanged="#tab0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: transparent; -fx-text-fill: white;" text="Who needs a Dollar?">
+                <Tab fx:id="whoNeedsDollarTab" onSelectionChanged="#tab0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: transparent; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" text="Who needs a Dollar?">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -27,7 +27,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="iNeedDollar" onSelectionChanged="#tab1" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-border-style: solid;" text="I need a Dollar!">
+                  <Tab fx:id="iNeedDollar" onSelectionChanged="#tab1" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-border-style: solid; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" text="I need a Dollar!">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-color: darkcyan;">
                            <children>
@@ -42,7 +42,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="transactions" onSelectionChanged="#tab2" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: transparent;" text="Transactions">
+                  <Tab fx:id="transactions" onSelectionChanged="#tab2" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: transparent; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" text="Transactions">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
