@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp8.server.model.User;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
 import org.academiadecodigo.bootcamp8.shared.Values;
 import org.academiadecodigo.bootcamp8.shared.message.Message;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -34,17 +35,12 @@ public class ClientHandler implements Runnable {
         while (run) {
             try {
                 read();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                System.err.println("Client closed ");
             }
         }
-        try {
-            clientSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
+
 
     private void setStreams() {
         try {
@@ -63,6 +59,7 @@ public class ClientHandler implements Runnable {
                 str = (Message<String[]>) objectInputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("error reading from stream " + e.getMessage());
+                close();
             }
             switch (str.getType()) {
                 case LOGIN:
@@ -79,9 +76,10 @@ public class ClientHandler implements Runnable {
 
     private boolean log(String[] str) {
         String[] s = str;
-        if (userService.authenticate(s[0], s[1])){
+        if (userService.authenticate(s[0], s[1])) {
             try {
                 objectOutputStream.writeObject(Values.LOGIN_OK);
+                run = true;
                 return true;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -115,23 +113,35 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
-    private void read() throws IOException, ClassNotFoundException {
-        Message msg;
-        if((msg = (Message) objectInputStream.readObject()) != null){
-            System.out.println(msg);
+    private void read() throws ClassNotFoundException {
+
+        try {
+            Message msg = (Message) objectInputStream.readObject();
+
             handle(msg);
-            return;
+
+        } catch (IOException e) {
+            run = false;
         }
-        System.out.println(" khk " + msg);
-        run = false;
+
     }
 
     private void handle(Message msg) {
-        switch (msg.getType()){
+        switch (msg.getType()) {
             case LOGOUT:
                 login();
                 break;
 
+        }
+    }
+
+    private void close() {
+        if (clientSocket != null) {
+            try {
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
