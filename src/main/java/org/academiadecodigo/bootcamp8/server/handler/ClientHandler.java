@@ -3,11 +3,16 @@ package org.academiadecodigo.bootcamp8.server.handler;
 import org.academiadecodigo.bootcamp8.server.model.User;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
 import org.academiadecodigo.bootcamp8.shared.Values;
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
 import org.academiadecodigo.bootcamp8.shared.message.Message;
+import org.academiadecodigo.bootcamp8.shared.message.MessageType;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * Created by Prashanta on 13/07/17.
@@ -136,6 +141,9 @@ public class ClientHandler implements Runnable {
             case ASKDOLLAR:
                 askDollar((String[])msg.getContent());
                 break;
+            case ACTIVEREQUESTS:
+                getListActive();
+                break;
         }
     }
 
@@ -158,6 +166,17 @@ public class ClientHandler implements Runnable {
         String str = userService.getBalance(username);
         try {
             objectOutputStream.writeObject(str);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getListActive() {
+        List<DualContainer> array = userService.getRequests();
+
+
+        try {
+            objectOutputStream.writeObject(array);
         } catch (IOException e) {
             e.printStackTrace();
         }

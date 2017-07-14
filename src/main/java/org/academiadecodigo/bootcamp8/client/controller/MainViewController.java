@@ -3,30 +3,36 @@ package org.academiadecodigo.bootcamp8.client.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import javafx.scene.control.Button;
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
+
 import java.net.URL;
-import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Controller {
 
+
+
+    @FXML
+    private Tab whoNeedsDollarTab;
+
     @FXML
     private TabPane tab;
 
     @FXML
-    private ListView<ObservableList> whoNeedsDollar;
+    private ListView<VBox> whoNeedsDollarList;
 
     @FXML
     private Tab iNeedDollar;
@@ -59,22 +65,122 @@ public class MainViewController implements Controller {
     private Button pay;
 
     @FXML
+    private Pane pane;
+
+    @FXML
     private Label username;
+
+    @FXML
+    private Label username1;
+
+    @FXML
+    private Label username2;
+
+    @FXML
+    private Label username11;
+
+    @FXML
+    private Label why;
+
+    @FXML
+    void pay(ActionEvent event) {
+
+    }
+
+    @FXML
+    private AnchorPane anchorPane;
+
     private Stage stage;
     private double x;
     private double y;
     private ConnectionService connectionService;
-    private ObservableList <Pane> whoNeedsDolars;
+    private List<DualContainer> list;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         setDraggable();
+        whoNeedsDollarList = new ListView<>();
+        //whoNeedsDollarList.setBorder();
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
         username.setText(connectionService.getLoggedUser());
         balance.setText(connectionService.getBalance() + "$");
+        setList();
+        //setDollar();
+
 
     }
+
+    public void setList() {
+        list = connectionService.getRequestList();
+
+        ObservableList<VBox> ob = FXCollections.observableArrayList();
+        for (int i = 0; i < list.size(); i++) {
+
+            VBox pane = new VBox();
+            pane.setMinWidth(720);
+//            pane.setStyle("-fx-min-width: 720px; -fx-min-height: 55px; ");
+            pane.setMinHeight(55);
+            Label username2 = new Label();
+            username2.setText(list.get(i).getName());
+            Label why = new Label();
+            Button button = new Button();
+            button.setText("Donate");
+
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    ob.remove(pane);
+                }
+            });
+
+            HBox hbox = new HBox();
+            hbox.setSpacing(100);
+            hbox.getChildren().addAll(why, button);
+            why.setText(list.get(i).getRequest());
+
+            pane.getChildren().addAll(username2, hbox);
+
+
+            username2.setVisible(true);
+            why.setVisible(true);
+
+            ob.add(pane);
+
+        }
+
+        whoNeedsDollarList.setItems(ob);
+        whoNeedsDollarList.setVisible(true);
+
+        anchorPane.getChildren().addAll(whoNeedsDollarList);
+
+    }
+
+    /*public void setDollar() {
+        list = connectionService.getRequestList();
+        ObservableList<Pane> ob = FXCollections.observableArrayList();
+        Iterator<DualContainer> it = list.iterator();
+
+        while (it.hasNext()) {
+
+            DualContainer dual = it.next();
+
+            pane = new Pane();
+            username1 = new Label();
+            username1.setText(dual.getName());
+            pane.getChildren().add(username1);
+            why = new Label();
+            why.setText(dual.getRequest());
+            pane.getChildren().add(why);
+            ob.add(pane);
+
+        }
+
+        whoNeedsDollarList.setItems(ob);
+
+    }*/
+
 
     @FXML
     void sendDollarRequest(ActionEvent event) {
@@ -98,10 +204,6 @@ public class MainViewController implements Controller {
 
     }
 
-    @FXML
-    void pay(ActionEvent event) {
-
-    }
 
     private void setDraggable() {
 
@@ -139,6 +241,11 @@ public class MainViewController implements Controller {
         this.stage = stage;
     }
 
+
+
+
 }
+
+
 
 

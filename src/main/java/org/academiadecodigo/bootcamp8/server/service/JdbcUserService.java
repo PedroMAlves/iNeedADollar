@@ -2,7 +2,12 @@ package org.academiadecodigo.bootcamp8.server.service;
 
 import org.academiadecodigo.bootcamp8.server.model.ConnectionManager;
 import org.academiadecodigo.bootcamp8.server.model.User;
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jramos on 29-06-2017.
@@ -57,5 +62,10 @@ public class JdbcUserService implements UserService {
     @Override
     public boolean addRequest(String user, String request) {
         return connectionManager.addRequest(user, request);
+    }
+
+    @Override
+    public List<DualContainer> getRequests() {
+        return connectionManager.activeRequests();
     }
 }

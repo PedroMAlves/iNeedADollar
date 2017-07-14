@@ -33,7 +33,7 @@ CREATE TABLE request (
   user_name_request 	CHAR(15) NOT NULL,
   user_name_answer		CHAR(15),
   operation_id			INTEGER ,
-  request_motiv 		CHAR(50),
+  request_motiv 		CHAR(200),
   request_answer		CHAR(50),
   state 				CHAR(10),
   date_request 			DATE,

@@ -1,6 +1,10 @@
 package org.academiadecodigo.bootcamp8.client.service.connectionservice;
 
 import org.academiadecodigo.bootcamp8.client.service.Service;
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
+
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * Created by Prashanta on 13/07/17.
@@ -23,5 +27,8 @@ public interface ConnectionService extends Service {
     String getBalance();
 
     String requestDollar(String[] insert);
+
+    List<DualContainer> getRequestList();
+
 }
 
