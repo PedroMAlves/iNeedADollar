@@ -117,7 +117,8 @@ public class ClientHandler implements Runnable {
 
     private void read() throws IOException, ClassNotFoundException {
         Message msg;
-        if((msg = (Message) objectInputStream.readObject()) != null){
+
+        if((msg = (Message) objectInputStream.readObject()) != null ) {
             System.out.println(msg);
             handle(msg);
             return;

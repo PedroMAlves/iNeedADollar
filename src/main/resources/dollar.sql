@@ -4,17 +4,17 @@ USE dollar;
 
 CREATE TABLE user (
   user_name     CHAR(15)  NOT NULL,
-  user_password CHAR(150) NOT NULL,
+  user_password CHAR(15) NOT NULL,
   PRIMARY KEY (user_name)
 );
 
 CREATE TABLE bio (
   user_bio         CHAR(15),
-  name              CHAR(100),
-  email             CHAR(100),
+  name              CHAR(30),
+  email             CHAR(30),
   date_birth        CHAR(30),
-  location			CHAR(50),
-  bio               VARCHAR(500),
+  location			CHAR(30),
+  bio               VARCHAR(100),
   PRIMARY KEY (user_bio),
   FOREIGN KEY (user_bio) REFERENCES user(user_name) ON DELETE CASCADE
 );
