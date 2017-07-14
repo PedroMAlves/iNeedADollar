@@ -15,4 +15,10 @@ public interface ConnectionService extends Service {
     void registerUser(String username, String password, String email);
 
     void setLoggedUser(String loggedUser);
+
+    void logoutUser();
+
+    String getLoggedUser();
+
 }
+

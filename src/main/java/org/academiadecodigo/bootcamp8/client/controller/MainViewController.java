@@ -1,15 +1,12 @@
 package org.academiadecodigo.bootcamp8.client.controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
@@ -61,13 +58,16 @@ public class MainViewController implements Controller {
     private double x;
     private double y;
     private ConnectionService connectionService;
+    private ObservableList <Pane> whoNeedsDolars;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDraggable();
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
+        username.setText(connectionService.getLoggedUser());
 
     }
+
 
     private void setDraggable() {
 
@@ -98,8 +98,7 @@ public class MainViewController implements Controller {
 
     @FXML
     void logout(ActionEvent event) {
-
-
+        connectionService.logoutUser();
         Navigation.getInstance().back();
 
     }
