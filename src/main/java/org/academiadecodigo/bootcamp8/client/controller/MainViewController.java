@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
-import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
-import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Controller {
+
 
     @FXML
     private TabPane tab;
@@ -56,6 +56,9 @@ public class MainViewController implements Controller {
     private Label balance;
 
     @FXML
+    private Button pay;
+
+    @FXML
     private Label username;
     private Stage stage;
     private double x;
@@ -86,6 +89,11 @@ public class MainViewController implements Controller {
                 stage.setY(event.getScreenY() - y);
             }
         });
+    }
+
+    @FXML
+    void pay(ActionEvent event) {
+
     }
 
     @FXML
