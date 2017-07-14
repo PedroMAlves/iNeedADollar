@@ -14,13 +14,11 @@ public interface UserService {
 
     boolean addUser(User user);
 
-    boolean updateBio(List<String> updatedBio);
-
     boolean deleteAccount(String username, String password);
 
     User getUser(String username);
 
-    boolean changePassword(String username, String oldPass, String newPass);
+    String getBalance(String username);
 
-    List<String> getUserBio(String username);
+    boolean addRequest(String user, String request);
 }

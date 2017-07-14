@@ -112,41 +112,6 @@ public class ConnectionManager {
         return user;
     }
 
-    /**
-     * Changes the password of a username
-     *
-     * @param username to target password change
-     * @param newPass  new password
-     * @return true if the actions was successful
-     */
-    public boolean changePass(String username, String newPass) {
-
-        boolean passChanged = true;
-        PreparedStatement statement = null;
-
-        try {
-
-            statement = connection.prepareStatement(Queries.ALTER_PASSWORD);
-            statement.setString(1, newPass);
-            statement.setString(2, username);
-            statement.execute();
-
-        } catch (SQLException e1) {
-
-            passChanged = false;
-
-        } finally {
-
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (SQLException e) {
-            }
-        }
-
-        return passChanged;
-    }
 
     /**
      * Delete the account of a specific username
@@ -198,61 +163,54 @@ public class ConnectionManager {
 
     }
 
-    /**
-     * Return the biography of a username
-     *
-     * @param username to target
-     * @return an list with the username biography
-     * @throws SQLException if exist an exception occurs when access the database
-     */
-    public List<String> getUserBio(String username) throws SQLException {
 
-        PreparedStatement statement = connection.prepareStatement(Queries.SHOW_BIO);
-        statement.setString(1, username);
-        ResultSet resultSet = statement.executeQuery();
-        List<String> userbio = new LinkedList<String>();
-
-        if (resultSet.next()) {
-            userbio.add(resultSet.getString("user_bio"));
-            userbio.add(resultSet.getString("name"));
-            userbio.add(resultSet.getString("email"));
-            userbio.add(resultSet.getString("date_birth"));
-            userbio.add(resultSet.getString("location"));
-            userbio.add(resultSet.getString("bio"));
-        }
-
-        statement.close();
-
-        return userbio;
-    }
-
-    /**
-     * Updates the username biography
-     *
-     * @param username  username to target
-     * @param email     new email information
-     * @param dateBirth new date birth information
-     * @param bio       new bio information
-     * @param
-     *@param  @return true if the operation was successful
-     */
-    public boolean updateBio(String username, String name , String email, String dateBirth, String location, String bio) {
-
+    public String getBalance(String username) {
         PreparedStatement statement = null;
-        boolean updated = true;
+        String msg = null;
 
         try {
 
-            statement = connection.prepareStatement(Queries.UPDATE_BIO);
-            statement.setString(1, name);
-            statement.setString(2, email);
-            statement.setString(3, dateBirth);
-            statement.setString(4, location);
-            statement.setString(5, bio);
+            statement = connection.prepareStatement(Queries.BALANCE);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                msg = resultSet.getString("balance");
+            }
+
+        } catch (SQLException e1) {
+
+            System.err.println("Database error.");
+
+        } finally {
+
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+            }
+
+        }
+        return msg;
+    }
+
+    public boolean addRequest(String user, String request) {
+        PreparedStatement statement = null;
+
+        try {
+
+            statement = connection.prepareStatement(Queries.INSERT_REQUEST);
+            statement.setString(1, user);
+            statement.setString(2, request);
+            statement.setString(3, "Active");
             statement.execute();
 
+
         } catch (SQLException e) {
-            updated = false;
+            System.err.println("SQL exception " + e.getMessage());;
+            return false;
+
         } finally {
 
             try {
@@ -262,7 +220,7 @@ public class ConnectionManager {
             } catch (SQLException e) {
             }
         }
-        return updated;
+        return true;
     }
 
 
@@ -280,4 +238,5 @@ public class ConnectionManager {
         }
 
     }
+
 }
