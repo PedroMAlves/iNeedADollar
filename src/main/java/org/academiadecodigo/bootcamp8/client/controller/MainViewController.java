@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp8.client.controller;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -15,9 +14,9 @@ import org.academiadecodigo.bootcamp8.client.service.connectionservice.Connectio
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import javafx.scene.control.Button;
+
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.ResourceBundle;
 
 public class MainViewController implements Controller {
@@ -26,7 +25,7 @@ public class MainViewController implements Controller {
     private TabPane tab;
 
     @FXML
-    private ListView<ObservableList> whoNeedsDollar;
+    private ListView<ObservableList> whoNeedsDollarsList;
 
     @FXML
     private Tab iNeedDollar;
@@ -59,13 +58,21 @@ public class MainViewController implements Controller {
     private Button pay;
 
     @FXML
+    private Pane tab0Underline;
+
+    @FXML
+    private Pane tab1Underline;
+
+    @FXML
+    private Pane tab2Underline;
+
+    @FXML
     private Label username;
     private Stage stage;
     private double x;
     private double y;
     private ConnectionService connectionService;
-    private ObservableList <Pane> whoNeedsDolars;
-
+    private ObservableList<Pane> whoNeedsDollarsPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,7 +80,6 @@ public class MainViewController implements Controller {
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
         username.setText(connectionService.getLoggedUser());
         balance.setText(connectionService.getBalance() + "$");
-
     }
 
     @FXML
@@ -139,6 +145,25 @@ public class MainViewController implements Controller {
         this.stage = stage;
     }
 
+    public void tab0(Event event) {
+        try {
+        tab0Underline.setVisible(true);
+        tab1Underline.setVisible(false);
+        tab2Underline.setVisible(false);
+        } catch (Exception e) {}
+    }
+
+    public void tab1(Event event) {
+        tab0Underline.setVisible(false);
+        tab1Underline.setVisible(true);
+        tab2Underline.setVisible(false);
+    }
+
+    public void tab2(Event event) {
+        tab0Underline.setVisible(false);
+        tab1Underline.setVisible(false);
+        tab2Underline.setVisible(true);
+    }
 }
 
 
