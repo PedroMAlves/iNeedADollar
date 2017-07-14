@@ -131,7 +131,18 @@ public class ClientHandler implements Runnable {
             case LOGOUT:
                 login();
                 break;
+            case BALANCE:
+                getBalance((String)msg.getContent());
+                break;
+        }
+    }
 
+    private void getBalance(String username) {
+        String str = userService.getBalance(username);
+        try {
+            objectOutputStream.writeObject(str);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

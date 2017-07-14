@@ -234,7 +234,7 @@ public class ConnectionManager {
      * @param dateBirth new date birth information
      * @param bio       new bio information
      * @param
-     *@param  @return true if the operation was successful
+     * @param  @return true if the operation was successful
      */
     public boolean updateBio(String username, String name , String email, String dateBirth, String location, String bio) {
 
@@ -267,10 +267,38 @@ public class ConnectionManager {
         return updated;
     }
 
+    public String getBalance(String username) {
+
+        PreparedStatement statement = null;
+        String msg = null;
+
+        try {
+
+            statement = connection.prepareStatement(Queries.BALANCE);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                msg = resultSet.getString("balance");
+            }
+
+        } catch (SQLException e1) {
+
+            System.err.println("Database error.");
+
+        } finally {
+
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+            }
 
 
-
-
+        }
+        return msg;
+    }
 
     /**
      * Close the connection to the database

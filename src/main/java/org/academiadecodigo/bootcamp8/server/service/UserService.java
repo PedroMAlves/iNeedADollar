@@ -23,4 +23,6 @@ public interface UserService {
     boolean changePassword(String username, String oldPass, String newPass);
 
     List<String> getUserBio(String username);
+
+    String getBalance(String username);
 }

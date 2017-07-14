@@ -65,6 +65,18 @@ public class ConnectionServiceImpl implements ConnectionService {
     }
 
     @Override
+    public String getBalance() {
+        String balance = null;
+        try {
+            objectOutputStream.writeObject(new Message<String>(MessageType.BALANCE, new String(loggedUser)));
+            balance = (String)objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return balance;
+    }
+
+    @Override
     public void logoutUser() {
         loggedUser = null;
         try {

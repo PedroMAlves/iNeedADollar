@@ -81,6 +81,10 @@ public class JdbcUserService implements UserService {
 
     }
 
+    @Override
+    public String getBalance(String username) {
+        return connectionManager.getBalance(username);
+    }
 
 
 }
