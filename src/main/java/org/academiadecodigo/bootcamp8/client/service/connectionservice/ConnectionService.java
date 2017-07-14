@@ -18,5 +18,7 @@ public interface ConnectionService extends Service {
 
     void logoutUser();
 
+    String getLoggedUser();
+
 }
 
