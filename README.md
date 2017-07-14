@@ -1,6 +1,6 @@
 # I Need a Dollar
 
-![logo](http://imgur.com/XUZh2K3)
+![logo](http://i.imgur.com/XUZh2K3.png)
 
 #### Application developed @ [<Academia de Código_>](http://academiadecodigo.org/) during a 24h Hackathon.
 
