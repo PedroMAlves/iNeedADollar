@@ -25,7 +25,7 @@ public class Queries {
     public static final String BALANCE = "SELECT balance FROM account WHERE user_account = ?";
     //public static final String OPERATIONS = "SELECT * FROM OPERATION WHERE user_account = ?";
     public static final String OPERATIONS = "SELECT * FROM operation INNER JOIN request ON operation.request_id = request.request_id WHERE operation.user_account = ?";
-
+    public static final String UPDATE_BALANCE = "UPDATE account SET balance = ? WHERE user_account = ?";
 
 }
 

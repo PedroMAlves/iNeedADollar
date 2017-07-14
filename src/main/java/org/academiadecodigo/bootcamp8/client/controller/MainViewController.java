@@ -99,7 +99,13 @@ public class MainViewController implements Controller {
         username.setText(connectionService.getLoggedUser());
         balance.setText(connectionService.getBalance() + "$");
 
-        
+
+        //List<String> values = Arrays.asList("one", "two", "three");
+
+        //whoNeedsDollar.setItems(FXCollections.observableList(values));
+
+
+
     }
 
 

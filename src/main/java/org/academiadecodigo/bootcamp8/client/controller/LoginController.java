@@ -16,6 +16,7 @@ import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import org.academiadecodigo.bootcamp8.shared.Values;
 import org.academiadecodigo.bootcamp8.shared.sound.Sound;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -141,7 +142,7 @@ public class LoginController implements Controller {
             Sound.play(getClass().getResource("/sounds/cashier.wav"));
             connectionService.setLoggedUser(username.getText());
             clearFields();
-            
+
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
             return;
         }

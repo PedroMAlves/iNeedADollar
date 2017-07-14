@@ -10,6 +10,7 @@ import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServi
 import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
+import org.academiadecodigo.bootcamp8.shared.sound.Sound;
 import javax.swing.*;
 
 /**
@@ -26,6 +27,7 @@ public class INeedADollar extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Sound.play(getClass().getResource("/sounds/NeedDollar.wav"));
 
         ConnectionService connectionService = new ConnectionServiceImpl();
         SessionService sessionService = new SessionServiceImpl();
