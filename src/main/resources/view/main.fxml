@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" spacing="20.0" style="-fx-background-color: DARKCYAN;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp8.client.controller.MainViewController">
-    <padding>
-        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-    </padding>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" style="-fx-background-color: darkcyan;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp8.client.controller.MainViewController">
    <children>
-      <BorderPane minHeight="350.0" minWidth="650.0" prefHeight="400.0" prefWidth="660.0">
-         <center>
-            <Pane prefHeight="352.0" prefWidth="459.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ListView fx:id="listedActive" layoutY="21.0" prefHeight="329.0" prefWidth="448.0" style="-fx-background-color: transparent; -fx-border-style: solid;" />
-                  <Label text="So, who needs a dollar?">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="pay" layoutX="419.0" onMouseClicked="#pay" text="PAY">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </center>
-         <right>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ListView fx:id="listedHistory" layoutX="8.0" prefHeight="309.0" prefWidth="192.0" style="-fx-background-color: transparent; -fx-border-style: solid;" />
-                  <Label fx:id="balance" alignment="BASELINE_RIGHT" layoutX="118.0" layoutY="317.0" prefHeight="39.0" prefWidth="82.0" text="0 €" textAlignment="CENTER">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="receive" alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="322.0" onMouseClicked="#receive" prefHeight="28.0" prefWidth="132.0" text="DOLLAR PLS!" textAlignment="CENTER">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </right>
-         <VBox.margin>
-            <Insets right="10.0" />
-         </VBox.margin>
-      </BorderPane>
+      <Pane prefHeight="45.0" prefWidth="210.0">
+         <children>
+            <TabPane fx:id="tab" minHeight="360.0" minWidth="720.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0">
+              <tabs>
+                <Tab fx:id="whoNeedsDollar" style="-fx-background-color: Transparent;" text="Who needs a Dollar?">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="historyList" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="iNeedDollar" style="-fx-background-color: Transparent;" text="I need a Dollar!">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label fx:id="needDollarLabel" layoutX="283.0" layoutY="82.0" text="Why a Dollar?">
+                                 <font>
+                                    <Font name="Verdana" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="whyDollar" layoutX="129.0" layoutY="124.0" prefHeight="77.0" prefWidth="463.0" style="-fx-border-style: solid;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="transactions" style="-fx-background-color: Transparent;" text="Transactions">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="historyList2" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Hyperlink fx:id="close" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="662.0" layoutY="370.0" onAction="#close" prefHeight="27.0" prefWidth="44.0" style="-fx-text-fill: black; -fx-border-color: transparent;" text="close" />
+            <Hyperlink fx:id="logout" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="605.0" layoutY="370.0" onAction="#logout" prefHeight="27.0" prefWidth="52.0" style="-fx-text-fill: black; -fx-border-color: transparent;" text="logout" />
+            <Label fx:id="balance" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="618.0" prefHeight="67.0" prefWidth="86.0" text="0€">
+               <font>
+                  <Font name="Verdana Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="username" alignment="CENTER_RIGHT" layoutX="420.0" layoutY="-1.0" prefHeight="67.0" prefWidth="224.0" text="Username" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </VBox>
