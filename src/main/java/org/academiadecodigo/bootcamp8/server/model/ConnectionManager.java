@@ -1,7 +1,12 @@
 package org.academiadecodigo.bootcamp8.server.model;
 
 import org.academiadecodigo.bootcamp8.server.model.Utils.Queries;
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Developed @ <Academia de Código_>
@@ -218,6 +223,38 @@ public class ConnectionManager {
             }
         }
         return true;
+    }
+
+    public List<DualContainer> activeRequests() {
+        ResultSet resultSet = null;
+        PreparedStatement statement = null;
+        List<DualContainer> list = new ArrayList<>();
+
+        try {
+            statement = connection.prepareStatement(Queries.ACTIVE_REQUEST);
+            statement.setString(1, "Active");
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                DualContainer dual = new DualContainer();
+                dual.setName(resultSet.getString("user_name_request"));
+                dual.setRequest(resultSet.getString("request_motiv"));
+                list.add(dual);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return list;
     }
 
 

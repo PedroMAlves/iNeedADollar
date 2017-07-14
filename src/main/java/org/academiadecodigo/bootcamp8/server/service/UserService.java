@@ -1,6 +1,10 @@
 package org.academiadecodigo.bootcamp8.server.service;
 
 import org.academiadecodigo.bootcamp8.server.model.User;
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
+
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * Created by Prashanta on 13/07/17.
@@ -19,4 +23,7 @@ public interface UserService {
     String getBalance(String username);
 
     boolean addRequest(String user, String request);
+
+    List<DualContainer> getRequests();
+
 }

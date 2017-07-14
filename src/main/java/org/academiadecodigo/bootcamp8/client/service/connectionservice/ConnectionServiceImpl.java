@@ -1,11 +1,14 @@
 package org.academiadecodigo.bootcamp8.client.service.connectionservice;
 
+import org.academiadecodigo.bootcamp8.shared.message.DualContainer;
 import org.academiadecodigo.bootcamp8.shared.message.Message;
 import org.academiadecodigo.bootcamp8.shared.message.MessageType;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * Created by Prashanta on 13/07/17.
@@ -53,6 +56,18 @@ public class ConnectionServiceImpl implements ConnectionService {
         } catch (IOException e) {
             System.err.println("Unable to write object.");
         }
+    }
+
+    @Override
+    public List<DualContainer> getRequestList() {
+        List<DualContainer> list = null;
+        try {
+            objectOutputStream.writeObject(new Message<String>(MessageType.ACTIVEREQUESTS, " "));
+            list = (List<DualContainer>) objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
