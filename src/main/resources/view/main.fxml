@@ -36,7 +36,7 @@
                                     <Font name="Verdana" size="22.0" />
                                  </font>
                               </Label>
-                              <TextArea fx:id="whyDollar" layoutX="91.0" layoutY="98.0" maxHeight="100.0" minHeight="50.0" minWidth="470.0" style="-fx-border-style: solid;" />
+                              <TextArea fx:id="whyDollar" layoutX="91.0" layoutY="98.0" maxHeight="100.0" minHeight="50.0" minWidth="470.0" style="-fx-border-style: solid;" wrapText="true" />
                             <Button fx:id="whyDollarButton" layoutX="91.0" layoutY="218.0" maxWidth="150.0" minWidth="538.0" mnemonicParsing="false" onAction="#sendDollarRequest" style="-fx-background-color: black; -fx-border-style: solid;" text="request" textFill="WHITE" />
                            </children>
                         </AnchorPane>
@@ -46,7 +46,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="historyList2" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="transactionList" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </content>

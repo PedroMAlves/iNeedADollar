@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp8.client.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -117,6 +118,8 @@ public class MainViewController implements Controller {
         this.stage = stage;
     }
 
+    public void updateDollarNeeds(Event event) {
+    }
 }
 
 
