@@ -13,4 +13,6 @@ public interface ConnectionService extends Service {
     String getReply();
 
     void registerUser(String username, String password, String email);
+
+    void setLoggedUser(String loggedUser);
 }

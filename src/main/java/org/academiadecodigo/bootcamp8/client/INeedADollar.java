@@ -11,6 +11,8 @@ import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServi
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 
+import javax.swing.*;
+
 /**
  * Created by Prashanta on 13/07/17.
  */
@@ -40,7 +42,14 @@ public class INeedADollar extends Application {
         navigation.loadScreen(Utilities.LOGIN_VIEW);
         primaryStage.setTitle("I Need a Dollar");
         primaryStage.show();
+
+        setIcon();
     }
 
-
+    private void setIcon() {
+        try {
+            com.apple.eawt.Application.getApplication().setDockIconImage(new ImageIcon(getClass().getResource(Utilities.ICON)).getImage());
+        } catch (Exception e) {
+        }
+    }
 }
