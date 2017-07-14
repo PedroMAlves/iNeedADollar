@@ -89,7 +89,6 @@ public class MainViewController implements Controller {
         setDraggable();
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
         username.setText(connectionService.getLoggedUser());
-
     }
 
     private void setDraggable() {

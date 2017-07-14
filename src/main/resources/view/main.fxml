@@ -18,7 +18,7 @@
          <children>
             <TabPane fx:id="tab" minHeight="360.0" minWidth="720.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0">
               <tabs>
-                <Tab fx:id="whoNeedsDollarTab" style="-fx-background-color: darkcyan; -fx-border-style: solid; -fx-border-color: darkcyan; -fx-text-fill: white;" text="Who needs a Dollar?">
+                <Tab fx:id="whoNeedsDollarTab" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: transparent; -fx-text-fill: white;" text="Who needs a Dollar?">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -27,7 +27,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="iNeedDollar" style="-fx-background-color: darkcyan; -fx-border-color: darkcyan; -fx-border-style: solid;" text="I need a Dollar!">
+                  <Tab fx:id="iNeedDollar" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-border-style: solid;" text="I need a Dollar!">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-color: darkcyan;">
                            <children>
@@ -42,7 +42,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="transactions" style="-fx-background-color: darkcyan; -fx-border-style: solid; -fx-border-color: darkcyan;" text="Transactions">
+                  <Tab fx:id="transactions" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: transparent;" text="Transactions">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -61,6 +61,16 @@
                </font>
             </Label>
             <Label fx:id="username" alignment="CENTER_RIGHT" layoutX="420.0" layoutY="-1.0" prefHeight="67.0" prefWidth="224.0" text="Username" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="username1" alignment="CENTER_RIGHT" layoutX="144.0" layoutY="10.0" prefHeight="45.0" prefWidth="7.0" text="|" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="username11" alignment="CENTER_RIGHT" layoutX="252.0" layoutY="10.0" prefHeight="45.0" prefWidth="7.0" text="|" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
