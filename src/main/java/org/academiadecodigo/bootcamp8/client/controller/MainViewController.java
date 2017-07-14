@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
+import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,7 +57,6 @@ public class MainViewController implements Controller {
 
     @FXML
     private Label username;
-
     private Stage stage;
     private double x;
     private double y;
@@ -63,7 +64,6 @@ public class MainViewController implements Controller {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         setDraggable();
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
 
