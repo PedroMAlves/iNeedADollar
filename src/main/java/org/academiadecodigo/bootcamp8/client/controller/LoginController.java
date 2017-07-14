@@ -128,6 +128,7 @@ public class LoginController implements Controller {
 
         if (reply.equals(Values.LOGIN_OK)) {
             connectionService.setLoggedUser(username.getText());
+            clearFields();
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
             return;
         }
@@ -188,6 +189,11 @@ public class LoginController implements Controller {
         login.setText("login");
         register.setText("register");
         eMailRemove();
+    }
+
+    private void clearFields() {
+        username.setText("");
+        password.setText("");
     }
 
     private void eMailRemove() {
