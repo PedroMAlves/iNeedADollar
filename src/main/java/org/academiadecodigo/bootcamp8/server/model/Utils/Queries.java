@@ -21,5 +21,11 @@ public class Queries {
 
     public static final String INSERT_ACCOUNT = "INSERT INTO account(user_account, balance) VALUES (?, ?)";
 
+
+    public static final String INSERT_REQUEST = "INSERT INTO request(user_name_request, request_motiv, state, date_request) VALUES (?, ?, ?, ?)";
+    public static final String UPDATE_REQUEST = "UPDATE request SET user_name_answer = ? , operation_id = ? , request_answer = ?, state = ? WHERE request_id = ?";
+
+
+
 }
 
