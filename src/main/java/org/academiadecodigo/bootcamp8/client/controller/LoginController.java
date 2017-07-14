@@ -93,7 +93,7 @@ public class LoginController implements Controller {
                 return;
             } else {
                 authenticate();
-                clearFields();
+
             }
         } else {
             if (isAnyFieldEmpty()) {
@@ -174,11 +174,6 @@ public class LoginController implements Controller {
         alert.setContentText(msg);
 
         return alert.showAndWait();
-    }
-
-    private void clearFields(){
-        
-
     }
 
     @FXML

@@ -61,6 +61,16 @@ public class ConnectionServiceImpl implements ConnectionService {
     }
 
     @Override
+    public void logoutUser() {
+        loggedUser = null;
+        try {
+            objectOutputStream.writeObject(new Message<String>(MessageType.LOGOUT, new String(" ")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public String getReply() {
 
         String msg = null;

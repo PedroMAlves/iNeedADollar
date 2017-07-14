@@ -98,8 +98,7 @@ public class MainViewController implements Controller {
 
     @FXML
     void logout(ActionEvent event) {
-
-
+        connectionService.logoutUser();
         Navigation.getInstance().back();
 
     }
