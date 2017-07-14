@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -14,6 +16,9 @@ import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import org.academiadecodigo.bootcamp8.shared.Values;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -83,6 +88,12 @@ public class LoginController implements Controller {
     @FXML
     void onHelp(ActionEvent event) {
 
+        try {
+            Desktop.getDesktop().browse(new URL("https://docs.google.com/presentation/d/12tmQHi64W8z7TprlpiD3wwZNoRpU" +
+                    "3ORlAXaA9FTvuI0/edit?usp=sharing").toURI());
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
