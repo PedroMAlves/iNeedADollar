@@ -5,6 +5,10 @@ public enum MessageType {
 
     LOGIN,
     REGISTER,
-    LOGOUT
+    LOGOUT,
+    BALANCE,
+    ASKDOLLAR,
+    OPERATIONS,
+    ACTIVEREQUESTS
 
 }

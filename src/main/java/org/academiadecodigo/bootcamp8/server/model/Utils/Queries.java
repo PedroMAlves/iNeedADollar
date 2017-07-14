@@ -21,5 +21,14 @@ public class Queries {
 
     public static final String INSERT_ACCOUNT = "INSERT INTO account(user_account, balance) VALUES (?, ?)";
 
+
+    public static final String INSERT_REQUEST = "INSERT INTO request(user_name_request, request_motiv, state, date_request) VALUES (?, ?, ?, ?)";
+    public static final String UPDATE_REQUEST = "UPDATE request SET user_name_answer = ? , operation_id = ? , request_answer = ?, state = ? WHERE request_id = ?";
+    public static final String ACTIVE_REQUEST = "SELECT * FROM request WHERE state = ?";
+    public static final String BALANCE = "SELECT balance FROM account WHERE user_account = ?";
+    //public static final String OPERATIONS = "SELECT * FROM OPERATION WHERE user_account = ?";
+    public static final String OPERATIONS = "SELECT * FROM operation INNER JOIN request ON operation.request_id = request.request_id WHERE operation.user_account = ?";
+
+
 }
 
