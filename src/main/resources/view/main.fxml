@@ -18,11 +18,11 @@
          <children>
             <TabPane fx:id="tab" minHeight="360.0" minWidth="720.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0">
               <tabs>
-                <Tab fx:id="whoNeedsDollar" onSelectionChanged="#updateDollarNeeds" style="-fx-background-color: Transparent;" text="Who needs a Dollar?">
+                <Tab fx:id="whoNeedsDollarTab" onSelectionChanged="#updateDollarNeeds" style="-fx-background-color: Transparent;" text="Who needs a Dollar?">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="whoNeedsDollar" onMouseClicked="#needsDollarPrompt" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="whoNeedsDollarList" onMouseClicked="#needsDollarPrompt" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                   </content>

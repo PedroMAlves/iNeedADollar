@@ -22,15 +22,11 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Controller {
 
-
     @FXML
     private TabPane tab;
 
     @FXML
-    private Tab whoNeedsDollar;
-
-    @FXML
-    private ListView<?> historyList;
+    private ListView<?> whoNeedsDollar;
 
     @FXML
     private Tab iNeedDollar;
@@ -42,10 +38,10 @@ public class MainViewController implements Controller {
     private TextArea whyDollar;
 
     @FXML
-    private Tab transactions;
+    private Button whyDollarButton;
 
     @FXML
-    private ListView<?> historyList2;
+    private ListView<?> transactionList;
 
     @FXML
     private Hyperlink close;
@@ -55,6 +51,31 @@ public class MainViewController implements Controller {
 
     @FXML
     private Label balance;
+
+    @FXML
+    private Tab transactions;
+
+    @FXML
+    private ListView<?> transactionsList;
+
+    @FXML
+    void needsDollarPrompt(MouseEvent event) {
+
+    }
+
+    @FXML
+    void sendDollarRequest(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateDollarNeeds(ActionEvent event) {
+    }
+
+    @FXML
+    void updateTransactions(ActionEvent event) {
+    }
+
 
     @FXML
     private Button pay;
