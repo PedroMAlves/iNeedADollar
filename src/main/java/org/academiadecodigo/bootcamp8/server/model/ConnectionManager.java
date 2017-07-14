@@ -261,15 +261,9 @@ public class ConnectionManager {
                 }
             } catch (SQLException e) {
             }
-
         }
-
         return updated;
     }
-
-
-
-
 
 
     /**
