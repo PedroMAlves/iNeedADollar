@@ -6,8 +6,6 @@ import javafx.stage.StageStyle;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
-import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionService;
-import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import org.academiadecodigo.bootcamp8.shared.sound.Sound;
@@ -30,10 +28,8 @@ public class INeedADollar extends Application {
         Sound.play(getClass().getResource("/sounds/NeedDollar.wav"));
 
         ConnectionService connectionService = new ConnectionServiceImpl();
-        SessionService sessionService = new SessionServiceImpl();
 
         ServiceRegistry.getInstance().addService(connectionService.getName(), connectionService);
-        ServiceRegistry.getInstance().addService(sessionService.getName(), sessionService);
 
 
         Navigation navigation = Navigation.getInstance();

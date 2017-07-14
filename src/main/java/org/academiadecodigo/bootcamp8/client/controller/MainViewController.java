@@ -66,31 +66,6 @@ public class MainViewController implements Controller {
     private ConnectionService connectionService;
     private ObservableList <Pane> whoNeedsDolars;
 
-    @FXML
-    void needsDollarPrompt(MouseEvent event) {
-
-    }
-
-    @FXML
-    void sendDollarRequest(ActionEvent event) {
-
-        String[] insert = {username.getText(), whyDollar.getText()};
-
-        String str = connectionService.requestDollar(insert);
-
-        Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.REQUEST_DOLLARS, str);
-
-        whyDollar.setText("");
-
-    }
-
-    @FXML
-    void updateDollarNeeds(ActionEvent event) {
-    }
-
-    @FXML
-    void updateTransactions(ActionEvent event) {
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,15 +74,34 @@ public class MainViewController implements Controller {
         username.setText(connectionService.getLoggedUser());
         balance.setText(connectionService.getBalance() + "$");
 
+    }
 
-        //List<String> values = Arrays.asList("one", "two", "three");
+    @FXML
+    void sendDollarRequest(ActionEvent event) {
+        String[] insert = {username.getText(), whyDollar.getText()};
+        String str = connectionService.requestDollar(insert);
+        Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.REQUEST_DOLLARS, str);
+        whyDollar.setText("");
+    }
 
-        //whoNeedsDollar.setItems(FXCollections.observableList(values));
+    @FXML
+    void updateDollarNeeds(ActionEvent event) {
+    }
 
-
+    @FXML
+    void updateTransactions(ActionEvent event) {
 
     }
 
+    @FXML
+    void needsDollarPrompt(MouseEvent event) {
+
+    }
+
+    @FXML
+    void pay(ActionEvent event) {
+
+    }
 
     private void setDraggable() {
 
@@ -129,23 +123,15 @@ public class MainViewController implements Controller {
     }
 
     @FXML
-    void pay(ActionEvent event) {
-
+    void logout(ActionEvent event) {
+        connectionService.logoutUser();
+        Navigation.getInstance().back();
     }
 
     @FXML
     void close(ActionEvent event) {
-
         connectionService.close();
         Navigation.getInstance().close();
-
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
-        connectionService.logoutUser();
-        Navigation.getInstance().back();
-
     }
 
     @Override
@@ -153,10 +139,6 @@ public class MainViewController implements Controller {
         this.stage = stage;
     }
 
-    public void updateDollarNeeds(Event event) {
-
-
-    }
 }
 
 
