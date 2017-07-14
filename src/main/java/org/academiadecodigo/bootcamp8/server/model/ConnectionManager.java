@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp8.server.model;
 
 import org.academiadecodigo.bootcamp8.server.model.Utils.Queries;
-
 import java.sql.*;
 
 /**

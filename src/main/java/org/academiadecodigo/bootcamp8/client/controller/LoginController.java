@@ -15,6 +15,7 @@ import org.academiadecodigo.bootcamp8.client.service.connectionservice.Connectio
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import org.academiadecodigo.bootcamp8.shared.Values;
+import org.academiadecodigo.bootcamp8.shared.sound.Sound;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -94,6 +95,7 @@ public class LoginController implements Controller {
         }
     }
 
+
     @FXML
     void onLogin(ActionEvent event) {
         if (login.getText().equals("login")) {
@@ -136,8 +138,10 @@ public class LoginController implements Controller {
 
 
         if (reply.equals(Values.LOGIN_OK)) {
+            Sound.play(getClass().getResource("/sounds/cashier.wav"));
             connectionService.setLoggedUser(username.getText());
             clearFields();
+            
             Navigation.getInstance().loadScreen(Utilities.MAIN_VIEW);
             return;
         }
@@ -168,6 +172,7 @@ public class LoginController implements Controller {
 
         if (s.equals(Values.REGISTER_OK)) {
             Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.LOGIN_MANAGER, s);
+            Sound.play(getClass().getResource("/sounds/cashier.wav"));
             eMailRemove();
             login.setText("login");
             register.setText("register");
