@@ -14,7 +14,6 @@ import org.academiadecodigo.bootcamp8.client.service.connectionservice.Connectio
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import javafx.scene.control.Button;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp8.client.utilities;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-
 import java.util.Optional;
 
 /**

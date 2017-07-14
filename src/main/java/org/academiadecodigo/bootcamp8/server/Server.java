@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp8.server;
 
 import org.academiadecodigo.bootcamp8.server.handler.ClientHandler;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

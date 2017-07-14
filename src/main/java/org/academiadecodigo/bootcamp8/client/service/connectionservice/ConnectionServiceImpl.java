@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp8.client.service.connectionservice;
 
 import org.academiadecodigo.bootcamp8.shared.message.Message;
 import org.academiadecodigo.bootcamp8.shared.message.MessageType;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

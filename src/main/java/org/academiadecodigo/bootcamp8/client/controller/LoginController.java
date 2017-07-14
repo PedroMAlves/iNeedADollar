@@ -15,12 +15,10 @@ import org.academiadecodigo.bootcamp8.client.service.connectionservice.Connectio
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import org.academiadecodigo.bootcamp8.shared.Values;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoginController implements Controller {

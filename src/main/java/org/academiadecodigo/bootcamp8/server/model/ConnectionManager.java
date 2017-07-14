@@ -3,8 +3,6 @@ package org.academiadecodigo.bootcamp8.server.model;
 import org.academiadecodigo.bootcamp8.server.model.Utils.Queries;
 
 import java.sql.*;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Developed @ <Academia de Código_>

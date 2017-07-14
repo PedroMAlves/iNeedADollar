@@ -2,12 +2,7 @@ package org.academiadecodigo.bootcamp8.server.service;
 
 import org.academiadecodigo.bootcamp8.server.model.ConnectionManager;
 import org.academiadecodigo.bootcamp8.server.model.User;
-
-
-
 import java.sql.SQLException;
-import java.util.List;
-
 
 /**
  * Created by Jramos on 29-06-2017.

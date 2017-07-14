@@ -10,7 +10,6 @@ import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServi
 import org.academiadecodigo.bootcamp8.client.service.sessionservice.SessionServiceImpl;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
-
 import javax.swing.*;
 
 /**

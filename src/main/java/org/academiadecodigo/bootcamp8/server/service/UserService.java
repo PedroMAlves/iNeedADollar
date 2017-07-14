@@ -2,8 +2,6 @@ package org.academiadecodigo.bootcamp8.server.service;
 
 import org.academiadecodigo.bootcamp8.server.model.User;
 
-import java.util.List;
-
 /**
  * Created by Prashanta on 13/07/17.
  */

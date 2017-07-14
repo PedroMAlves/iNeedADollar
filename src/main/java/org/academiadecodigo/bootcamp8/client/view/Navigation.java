@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.controller.Controller;
 import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;

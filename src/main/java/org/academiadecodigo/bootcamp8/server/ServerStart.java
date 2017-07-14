@@ -3,7 +3,6 @@ package org.academiadecodigo.bootcamp8.server;
 import org.academiadecodigo.bootcamp8.server.model.ConnectionManager;
 import org.academiadecodigo.bootcamp8.server.service.JdbcUserService;
 import org.academiadecodigo.bootcamp8.server.service.UserService;
-
 import java.io.IOException;
 
 
