@@ -126,7 +126,10 @@ public class ClientHandler implements Runnable {
 
     private void handle(Message msg) {
         switch (msg.getType()){
-
+            case LOGOUT:
+                login();
+                break;
+            
         }
     }
 }
