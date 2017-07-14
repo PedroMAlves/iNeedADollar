@@ -32,7 +32,16 @@ public class ClientHandler implements Runnable {
         setStreams();
         login();
         while (run) {
-            read();
+            try {
+                read();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
@@ -106,11 +115,19 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
-    private void read() {
-        try {
-            System.out.println(objectInputStream.readObject());
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+    private void read() throws IOException, ClassNotFoundException {
+        Message msg;
+        if((msg = (Message) objectInputStream.readObject()) != null){
+            handle(msg);
+            return;
+        }
+        run = false;
+    }
+
+    private void handle(Message msg) {
+
+        switch (msg.getType()){
+
         }
 
     }

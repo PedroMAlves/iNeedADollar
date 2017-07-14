@@ -42,7 +42,7 @@ public class MainViewController implements Controller{
 
     @Override
     public void setStage(Stage stage) {
-        
+
     }
 
     @Override
