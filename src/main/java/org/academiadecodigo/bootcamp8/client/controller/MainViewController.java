@@ -24,7 +24,7 @@ public class MainViewController implements Controller {
     private TabPane tab;
 
     @FXML
-    private ListView<?> whoNeedsDollar;
+    private ListView<ObservableList> whoNeedsDollar;
 
     @FXML
     private Tab iNeedDollar;
@@ -39,9 +39,6 @@ public class MainViewController implements Controller {
     private Button whyDollarButton;
 
     @FXML
-    private ListView<?> transactionList;
-
-    @FXML
     private Hyperlink close;
 
     @FXML
@@ -54,7 +51,7 @@ public class MainViewController implements Controller {
     private Tab transactions;
 
     @FXML
-    private ListView<?> transactionsList;
+    private ListView<ObservableList> transactionsList;
 
     @FXML
     private Button pay;
@@ -99,6 +96,8 @@ public class MainViewController implements Controller {
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
         username.setText(connectionService.getLoggedUser());
         balance.setText(connectionService.getBalance() + "$");
+
+        
     }
 
 
