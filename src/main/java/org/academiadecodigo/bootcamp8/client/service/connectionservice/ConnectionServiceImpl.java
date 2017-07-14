@@ -15,6 +15,7 @@ public class ConnectionServiceImpl implements ConnectionService {
     Socket socket;
     ObjectInputStream objectInputStream;
     ObjectOutputStream objectOutputStream;
+    private String loggedUser;
 
 
     public ConnectionServiceImpl() {
@@ -54,6 +55,10 @@ public class ConnectionServiceImpl implements ConnectionService {
         }
     }
 
+    @Override
+    public void setLoggedUser(String loggedUser) {
+        this.loggedUser = loggedUser;
+    }
 
     @Override
     public String getReply() {

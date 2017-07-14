@@ -118,16 +118,19 @@ public class ClientHandler implements Runnable {
     private void read() throws IOException, ClassNotFoundException {
         Message msg;
         if((msg = (Message) objectInputStream.readObject()) != null){
+            System.out.println(msg);
             handle(msg);
             return;
         }
+        System.out.println(" khk " + msg);
         run = false;
     }
 
     private void handle(Message msg) {
 
         switch (msg.getType()){
-
+            default:
+            return;
         }
 
     }

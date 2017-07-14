@@ -9,6 +9,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
+import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,7 +52,13 @@ public class MainViewController implements Controller {
 
     @FXML
     private Label username;
+    private ConnectionService connectionService;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
+
+    }
     @FXML
     void close(ActionEvent event) {
 
@@ -66,10 +74,6 @@ public class MainViewController implements Controller {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }
 
 
