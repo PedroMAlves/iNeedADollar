@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp8.client.service.ServiceRegistry;
 import org.academiadecodigo.bootcamp8.client.service.connectionservice.ConnectionService;
+import org.academiadecodigo.bootcamp8.client.utilities.Utilities;
 import org.academiadecodigo.bootcamp8.client.view.Navigation;
 import javafx.scene.control.Button;
 
@@ -26,7 +27,7 @@ public class MainViewController implements Controller {
     private TabPane tab;
 
     @FXML
-    private ListView<?> whoNeedsDollar;
+    private ListView<ObservableList> whoNeedsDollar;
 
     @FXML
     private Tab iNeedDollar;
@@ -41,9 +42,6 @@ public class MainViewController implements Controller {
     private Button whyDollarButton;
 
     @FXML
-    private ListView<?> transactionList;
-
-    @FXML
     private Hyperlink close;
 
     @FXML
@@ -56,26 +54,7 @@ public class MainViewController implements Controller {
     private Tab transactions;
 
     @FXML
-    private ListView<?> transactionsList;
-
-    @FXML
-    void needsDollarPrompt(MouseEvent event) {
-
-    }
-
-    @FXML
-    void sendDollarRequest(ActionEvent event) {
-
-    }
-
-    @FXML
-    void updateDollarNeeds(ActionEvent event) {
-    }
-
-    @FXML
-    void updateTransactions(ActionEvent event) {
-    }
-
+    private ListView<ObservableList> transactionsList;
 
     @FXML
     private Button pay;
@@ -88,12 +67,40 @@ public class MainViewController implements Controller {
     private ConnectionService connectionService;
     private ObservableList <Pane> whoNeedsDolars;
 
+    @FXML
+    void needsDollarPrompt(MouseEvent event) {
+
+    }
+
+    @FXML
+    void sendDollarRequest(ActionEvent event) {
+
+        String[] insert = {username.getText(), whyDollar.getText()};
+
+        String str = connectionService.requestDollar(insert);
+
+        Utilities.userPrompt(Alert.AlertType.INFORMATION, Utilities.REQUEST_DOLLARS, str);
+
+        whyDollar.setText("");
+
+    }
+
+    @FXML
+    void updateDollarNeeds(ActionEvent event) {
+    }
+
+    @FXML
+    void updateTransactions(ActionEvent event) {
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDraggable();
         connectionService = ServiceRegistry.getInstance().getService(ConnectionService.class);
         username.setText(connectionService.getLoggedUser());
+        balance.setText(connectionService.getBalance() + "$");
 
+        
     }
 
 

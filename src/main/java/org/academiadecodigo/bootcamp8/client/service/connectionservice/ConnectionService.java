@@ -20,5 +20,8 @@ public interface ConnectionService extends Service {
 
     String getLoggedUser();
 
+    String getBalance();
+
+    String requestDollar(String[] insert);
 }
 
