@@ -28,7 +28,11 @@ public class JdbcUserService implements UserService {
 
     @Override
     public boolean addUser(User user) {
-        return connectionManager.insertUser(user.getUsername(), user.getPassword());
+        if (getUser(user.getUsername()) != null) {
+            return false;
+        }
+        return connectionManager.insertUser(user.getUsername(), user.getPassword(), user.getEmail());
+
     }
 
 
@@ -53,7 +57,6 @@ public class JdbcUserService implements UserService {
         } catch (SQLException e) {
 
         }
-        System.out.println(user);
         return user;
     }
 
