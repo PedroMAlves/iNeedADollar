@@ -56,6 +56,17 @@ public class MainViewController implements Controller {
     private ListView<?> transactionsList;
 
     @FXML
+    private Button pay;
+
+    @FXML
+    private Label username;
+    private Stage stage;
+    private double x;
+    private double y;
+    private ConnectionService connectionService;
+    private ObservableList <Pane> whoNeedsDolars;
+
+    @FXML
     void needsDollarPrompt(MouseEvent event) {
 
     }
@@ -73,18 +84,6 @@ public class MainViewController implements Controller {
     void updateTransactions(ActionEvent event) {
     }
 
-
-    @FXML
-    private Button pay;
-
-    @FXML
-    private Label username;
-    private Stage stage;
-    private double x;
-    private double y;
-    private ConnectionService connectionService;
-    private ObservableList <Pane> whoNeedsDolars;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDraggable();
@@ -92,7 +91,6 @@ public class MainViewController implements Controller {
         username.setText(connectionService.getLoggedUser());
 
     }
-
 
     private void setDraggable() {
 

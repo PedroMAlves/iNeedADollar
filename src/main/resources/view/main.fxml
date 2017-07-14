@@ -12,24 +12,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" style="-fx-background-color: darkcyan;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp8.client.controller.MainViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp8.client.controller.MainViewController">
    <children>
       <Pane prefHeight="45.0" prefWidth="210.0">
          <children>
             <TabPane fx:id="tab" minHeight="360.0" minWidth="720.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0">
               <tabs>
-                <Tab fx:id="whoNeedsDollarTab" style="-fx-background-color: Transparent;" text="Who needs a Dollar?">
+                <Tab fx:id="whoNeedsDollarTab" style="-fx-background-color: darkcyan; -fx-border-style: solid; -fx-border-color: darkcyan; -fx-text-fill: white;" text="Who needs a Dollar?">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="whoNeedsDollarList" onMouseClicked="#needsDollarPrompt" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="whoNeedsDollarList" onMouseClicked="#needsDollarPrompt" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="iNeedDollar" style="-fx-background-color: Transparent;" text="I need a Dollar!">
+                  <Tab fx:id="iNeedDollar" style="-fx-background-color: darkcyan; -fx-border-color: darkcyan; -fx-border-style: solid;" text="I need a Dollar!">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-color: darkcyan;">
                            <children>
                               <Label fx:id="needDollarLabel" layoutX="283.0" layoutY="54.0" text="Why a Dollar?">
                                  <font>
@@ -42,11 +42,11 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="transactions" style="-fx-background-color: Transparent;" text="Transactions">
+                  <Tab fx:id="transactions" style="-fx-background-color: darkcyan; -fx-border-style: solid; -fx-border-color: darkcyan;" text="Transactions">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="transactionsList" onMouseClicked="#needsDollarPrompt" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="transactionsList" onMouseClicked="#needsDollarPrompt" style="-fx-background-color: darkcyan;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </content>
