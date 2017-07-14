@@ -67,6 +67,12 @@ public class MainViewController implements Controller {
     private Pane tab2Underline;
 
     @FXML
+    private Label transactionAction;
+
+    @FXML
+    private Label transactionUsername;
+
+    @FXML
     private Label username;
     private Stage stage;
     private double x;

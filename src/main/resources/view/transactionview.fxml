@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp8.client.controller.MainViewController">
    <children>
-      <Label layoutX="24.0" layoutY="5.0" prefHeight="45.0" prefWidth="129.0" text="Got a Dollar">
+      <Label fx:id="transactionAction" alignment="CENTER_RIGHT" layoutX="141.0" layoutY="5.0" prefHeight="45.0" prefWidth="132.0" text="RECEIVED">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="567.0" layoutY="5.0" prefHeight="45.0" prefWidth="139.0" text="Username">
+      <Label fx:id="transactionUsername" layoutX="416.0" layoutY="5.0" prefHeight="45.0" prefWidth="163.0" text="transUsername">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="37.0" fitWidth="69.0" layoutX="282.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@money.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="354.0" layoutY="5.0" prefHeight="45.0" prefWidth="62.0" text="from">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>
